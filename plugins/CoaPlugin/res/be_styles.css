@@ -1,0 +1,68 @@
+/*
+Coa Admin Styles
+http://coa.plue.me
+*/
+
+
+h3, h3.floated,
+body .uploadifyError,
+.wrapper table td span.ERRmsg,
+a.cancel:link, a.cancel:visited {
+color: #C00 !important;
+}
+
+#sidebar .snav li a.current, #sidebar .snav li a.current:hover,
+.edit-nav a:hover, #sidebar .edit-nav a:hover, .edit-nav a.current,
+body .uploadifyError .uploadifyProgressBar,
+a.cancel:hover, body .delete a:hover {
+background-color: #C00 !important;
+}
+
+a.cancel:hover {
+color: #fff !important;
+}
+
+.header {
+background: #444; 
+background: -moz-linear-gradient(top, #444 0%, #444 100%); 
+background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,#444), color-stop(100%,#444)); 
+filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#444', endColorstr='#444',GradientType=0 );
+}
+
+body .uploadifyButton,
+body .wrapper .nav li a:link, body .wrapper .nav li a:visited, 
+body .wrapper #pill li a:link, body .wrapper #pill li a:visited,
+body #sidebar .snav li a:link, body #sidebar .snav li a:visited,
+body .wrapper a.component:hover {
+color: #fff;
+}
+
+.wrapper .nav li a:hover em, .wrapper .nav li a:focus em,
+#sidebar .snav li a:hover em, #sidebar .snav li a:focus em,
+#sidebar .snav li a.current:hover em, #sidebar .snav li a.current:focus em,
+.edit-nav a.current em, .edit-nav a:hover em, .edit-nav a:focus em {
+border-bottom: 0 !important;
+}
+
+.wrapper #pill li.debug a:link, .wrapper #pill li.debug a:visited, .wrapper #pill li.debug a:hover,
+.wrapper .nav li.rightnav a.first, .wrapper #pill li.leftnav a {
+border-left: 1px solid #444 !important;
+}
+
+body .wrapper .secondarylink a:hover,
+body #sidebar .snav li a:hover {
+background-color: #444;
+}
+
+body .popup table a:link, body .popup table a:visited {
+color: #444;
+}
+
+body .header h1 a:link, body .header h1 a:visited, body .header h1 a:hover {
+color: #fff;
+}
+
+body .wrapper .nav li a:link, body .wrapper .nav li a:visited, 
+body .wrapper #pill li a:link, body .wrapper #pill li a:visited {
+text-shadow: none;
+}

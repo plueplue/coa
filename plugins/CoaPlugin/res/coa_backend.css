@@ -1,0 +1,186 @@
+/*
+Coa Backend CSS
+http://coa.plue.me
+*/
+
+
+/* @group translation editor */
+
+#cke_post-content-translation {
+border: 1px solid #999;
+border: 0;
+-moz-border-radius: 4px 4px 0 0;
+-khtml-border-radius: 4px 4px 0 0;
+-webkit-border-radius: 4px 4px 0 0;
+border-radius: 4px 4px 0 0;
+overflow: hidden;
+margin-bottom: 2em;
+display: block;
+clear: both;
+height: 0;
+}
+
+#cke_top_post-content-translation {
+	border-bottom: 1px solid #CF3805;
+	background: #eeeeee;
+	background: -moz-linear-gradient(top, #eeeeee, #e2e2e2);
+	background: -webkit-gradient(linear, left top, left bottom, from(#eeeeee), to(#e2e2e2));
+}
+#cke_bottom_post-content-translation {
+	border-top: 1px solid #999;
+	background: #f6f6f6;
+}
+#cke_top_post-content-translation .cke_toolbar {
+	margin: 2px 0 0px 2px;
+	background: transparent;	
+}
+#cke_top_post-content-translation .cke_toolbox, #cke_top_post-content-translation .cke_toolgroup {
+background: transparent;
+}
+
+/* @end */
+
+
+/* @group add content editor */
+
+#cke_add-content-1, #cke_add-content-2, #cke_add-content-3 {
+background:#eeeeee;
+background: -moz-linear-gradient(top, #eeeeee, #e2e2e2);
+background: -webkit-gradient(linear, left top, left bottom, from(#eeeeee), to(#e2e2e2));
+border:1px solid #999;
+-moz-border-radius: 4px 4px 0 0;
+-khtml-border-radius: 4px 4px 0 0;
+-webkit-border-radius: 4px 4px 0 0;
+border-radius:4px 4px 0 0;
+overflow:hidden;
+margin-bottom: 2em;
+}
+#cke_bottom_add-content-1, #cke_bottom_add-content-2, #cke_bottom_add-content-3 {
+border-top:1px solid #eee;
+background:#f6f6f6;
+}
+#cke_top_add-content-1 .cke_toolbar, #cke_top_add-content-2 .cke_toolbar, #cke_top_add-content-3 .cke_toolbar {
+margin:2px 0 0px 2px;
+background:transparent;
+}
+#cke_top_add-content-1 .cke_toolbox, #cke_top_add-content-1 .cke_toolgroup,
+#cke_top_add-content-2 .cke_toolbox, #cke_top_add-content-2 .cke_toolgroup,
+#cke_top_add-content-3 .cke_toolbox, #cke_top_add-content-3 .cke_toolgroup {
+background:transparent;
+}
+#cke_top_add-content-1,
+#cke_top_add-content-2,
+#cke_top_add-content-3 {
+border-bottom: 1px solid #999;
+background: #EEE;
+background: -moz-linear-gradient(top, #EEE, #E2E2E2);
+background: -webkit-gradient(linear, left top, left bottom, from(#EEE), to(#E2E2E2));
+}
+
+/* @end */
+
+
+/* @group sidebar button */
+
+.act_content a {
+margin-left: 0px;
+cursor: pointer;
+color: white !important;
+background: #CF3805 !important;
+text-shadow: 1px 1px 0px #9F2C04;
+padding-left: 28px;
+border-radius: 0 3px 3px 0;
+}
+
+/* @end */
+
+
+/* @group translation extras */
+
+#translation_title, #translation_menu {
+width: 48%;
+float: left;
+}
+#translation_menu {
+float: right;
+}
+
+/* @end */
+
+
+/* @group fullscreen edit mode */
+
+.edit_mode_act {
+position: absolute;
+top: 0;
+left: 0;
+width: 100%;
+height: 100%;
+}
+
+select#theme_files {
+max-width: 95%;
+}
+
+.unhover {
+background-color: #182227 !important;
+color: #CCC !important;
+text-shadow: 1px 1px 0px rgba(0, 0, 0, .2) !important;
+}
+.unhover em {
+border: 0 !important;
+}
+
+/* @end */
+
+
+/* @group add content */
+
+.wrapper a.add_content {
+padding: 0.4em 1em;
+text-align: center;
+cursor: pointer;
+margin-bottom: 2em;
+display: block;
+text-decoration: none !important;
+color: #333;
+font: bold 12px Helvetica, Arial, sans-serif;
+text-shadow: 0 1px 0 rgba(255, 255, 255, .5);
+-webkit-transition: all .218s; -moz-transition: all .218s; -o-transition: all .218s;
+transition: all .218s;
+background: #DDD;
+background: -webkit-gradient(linear,0% 40%,0% 70%,from(#EEE),to(#E1E1E1));
+background: -moz-linear-gradient(linear,0% 40%,0% 70%,from(#EEE),to(#E1E1E1));
+border: solid 1px #ACACAC;
+-webkit-border-radius: 2px; -moz-border-radius: 2px;
+border-radius: 2px;
+-moz-box-shadow: rgba(0,0,0, 0.06) 0px 0px 3px; -webkit-box-shadow: rgba(0, 0, 0, 0.06) 0px 0px 3px;
+box-shadow: rgba(0, 0, 0, 0.06) 0px 0px 3px;
+}
+.wrapper a.add_content:hover {
+	color: #111111;
+  background: #eeeeee;
+  background: -webkit-gradient(linear,0% 40%,0% 70%,from(#eeeeee),to(#dddddd));
+  background: -moz-linear-gradient(linear,0% 40%,0% 70%,from(#eeeeee),to(#dddddd));
+  border: solid 1px #aaaaaa;
+  -moz-box-shadow: rgba(0,0,0, 0.15) 0px 0px 4px;  
+	-webkit-box-shadow: rgba(0,0,0, 0.15) 0px 0px 4px;
+	box-shadow: rgba(0,0,0, 0.15) 0px 0px 4px;  
+}
+textarea.add-content {
+max-height: 200px;
+}
+
+/* @end */
+
+
+/* @group settings */
+
+form#coa_settings input[type="checkbox"] {
+float: left;
+width: auto;
+margin-right: 0.6em;
+margin-top: 0.2em;
+}
+
+/* @end */

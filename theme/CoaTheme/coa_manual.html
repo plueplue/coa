@@ -1,0 +1,667 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <!--[if IE]><meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1"><![endif]-->
+  <title>Coa, a GetSimple framework</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="robots" content="index, follow">
+  <meta name="author" content="Benjamin Scherer">
+  <meta name="description" content="Coa is a powerful framework to create lean and functional templates. It provides CoaScript and some useful out of the box features for fast and flexible development.">
+  <!--[if lt IE 9]><script src="http://html5shiv.googlecode.com/svn/trunk/html5.js"></script><![endif]-->
+  <link rel="stylesheet" href="http://fonts.googleapis.com/css?family=Dosis:500,600">
+  
+  <style type="text/css">
+    
+    /*
+    CRACK CSS v10.2
+    www.plue.me/crack
+    MIT License
+    */
+    
+    /*! normalize.css v2.1.0 | MIT License | git.io/normalize */
+    article,aside,details,figcaption,figure,footer,header,hgroup,main,nav,section,summary{display:block}audio,canvas,video{display:inline-block}audio:not([controls]){display:none;height:0}[hidden]{display:none}html{font-family:sans-serif;-webkit-text-size-adjust:100%;-ms-text-size-adjust:100%}body{margin:0}a:focus{outline:thin dotted}a:active,a:hover{outline:0}h1{font-size:2em;margin:0.67em 0}abbr[title]{border-bottom:1px dotted}b,strong{font-weight:bold}dfn{font-style:italic}hr{-moz-box-sizing:content-box;box-sizing:content-box;height:0}mark{background:#ff0;color:#000}code,kbd,pre,samp{font-family:monospace,serif;font-size:1em}pre{white-space:pre-wrap}q{quotes:"\201C""\201D""\2018""\2019"}small{font-size:80%}sub,sup{font-size:75%;line-height:0;position:relative;vertical-align:baseline}sup{top:-0.5em}sub{bottom:-0.25em}img{border:0}svg:not(:root){overflow:hidden}figure{margin:0}fieldset{border:1px solid #c0c0c0;margin:0 2px;padding:0.35em 0.625em 0.75em}legend{border:0;padding:0}button,input,select,textarea{font-family:inherit;font-size:100%;margin:0}button,input{line-height:normal}button,select{text-transform:none}button,html input[type="button"],input[type="reset"],input[type="submit"]{-webkit-appearance:button;cursor:pointer}button[disabled],html input[disabled]{cursor:default}input[type="checkbox"],input[type="radio"]{box-sizing:border-box;padding:0}input[type="search"]{-webkit-appearance:textfield;-moz-box-sizing:content-box;-webkit-box-sizing:content-box;box-sizing:content-box}input[type="search"]::-webkit-search-cancel-button,input[type="search"]::-webkit-search-decoration{-webkit-appearance:none}button::-moz-focus-inner,input::-moz-focus-inner{border:0;padding:0}textarea{overflow:auto;vertical-align:top}table{border-collapse:collapse;border-spacing:0}
+    
+    /* @group base */
+    html{-webkit-font-smoothing:antialiased}a{text-decoration:none}:hover,:focus,:active{outline:0}blockquote{font-style:italic;margin:1em 30px}pre,code{font-family:monaco,monospace,courier}code{background:#f9f9f9;border:1px solid #ccc;font-size:80%;padding:.1em .2em}pre code{display:block;display:inline-block;padding:.5em .8em}td,th{border-bottom:1px solid #ccc;padding:.4em 2em;text-align:left}th:first-child,td:first-child{padding-left:0.7em}img{max-width:100%}ul{list-style:outside;padding-left:1.3em}ol{padding-left:1.5em}ul ul{list-style:circle;margin:0;padding-left:2em}p,ul,ol,form,table{margin:0}.hide{display:none}.clear{display:block;clear:both}.cf{zoom:1}.cf:before,.cf:after{content:"";display:table}.cf:after{clear:both}
+    /* @end */
+    
+    
+    /* @group global */
+    
+    html {
+    font-family: Dosis, arial, verdana, sans-serif;
+    font-size: 16px;
+    color: #333;
+    font-weight: 500;
+    }
+    body {
+    line-height: 1.4;
+    padding: 7% 13%;
+    }
+    
+    b {
+    font-weight: 600;
+    }
+    a {
+    color: #144FAE;
+    }
+    a:hover {
+    color: #000;
+    }
+    
+    h1, h2, h3, h4 {
+    margin: 0.6em 0;
+    line-height: 1.1;
+    }
+    h1 {
+    font-size: 2.1em;
+    }
+    h2 {
+    font-size: 1.7em;
+    }
+    
+    p, ul, ol, form, table {
+    margin-bottom: 1em;
+    }
+    p.less {
+    margin-bottom: 0.3em;
+    }
+    
+    /* @end */
+      
+      
+    /* @group content */
+    
+    #wrap {
+    max-width:735px;
+    }
+
+    .multi ul {
+    float: left;
+    margin-bottom: 0;
+    }
+    .multi ul:first-child {
+    margin-right: 4em;
+    }
+      
+    article {
+    margin-bottom: 3em;
+    clear:both;
+    }
+
+    code {
+    background: #f9f9f9;
+    border: 1px solid #ccc;
+    padding: 0 2px;
+    margin-bottom: 1.5em;
+    border-radius: 4px;
+    font-size: 0.75em;
+    }
+    code.block {
+    display: block;
+    display: inline-block;
+    padding: 0.5em 1.7em 0.5em 0.7em;
+    width: auto;
+    }
+    code.block span {
+    display: block;
+    text-indent: 1em;
+    }
+    code.block span em {
+    color: #777;
+    font-style: normal;
+    }
+  
+    /* @end */
+    
+  </style>
+  
+</head>
+
+<body>
+
+  <div id="wrap">
+  
+  
+    <article>
+      
+      <h1>Coa, a GetSimple framework</h1>
+      
+      <p>Coa is a powerful framework to create lean and functional templates.<br>
+        It provides CoaScript and some useful out of the box features for fast and flexible development.</p>
+      <p>Coa is available for <a href="http://get-simple.info/" target="_blank">GetSimple</a>, the simplest Content Management System ever.<br>
+        The latest version is Coa 1.8.</p>
+  
+      <p>
+        <a class="link" href="http://get-simple.info/extend/plugin/coa/375/" target="_blank">Download</a> | 
+        <a class="link" href="http://coa.plue.me" target="_blank">Manual</a> | 
+        <a class="link" href="https://github.com/plueplue/coa" target="_blank">Github</a> | 
+        <a class="link" href="https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&amp;hosted_button_id=GRD95ABZXJUTC" target="_blank">Donate</a>
+      </p>
+      
+    </article>
+    
+    
+    <article>
+      
+      <h2>Features</h2>
+      
+      <div class="multi cf">
+        <ul>
+          <li>CoaScript</li>
+          <li>Solid HTML5 and CSS</li>
+          <li>Hierachical, Breadcrumb and List Menus</li>
+          <li>Smooth Page Translation</li>
+          <li>E-Mail Protection</li>
+        </ul>
+        <ul>
+          <li>Tags and Variables</li>
+          <li>HTML Cache</li>
+          <li>Additional Page Content</li> 
+          <li>Fullscreen Theme Edit</li>
+          <li>Optional Admin Style</li>
+        </ul>
+      </div>
+    
+    </article>
+    
+    
+    <article>
+      
+      <h2>Install</h2>
+
+        <ol>
+          <li>Upload "CoaPlugin" and "CoaPlugin.php" to your plugins folder</li>
+          <li>Upload "CoaTheme" to your theme folder</li>
+          <li>Activate both theme and plugin</li>
+          <li>Reload the front-end</li>
+        </ol>
+    </article>
+    
+    
+    <article>
+      
+      <h2>License</h2>
+      
+      <p>
+        <a href="http://opensource.org/licenses/MIT" target="_blank">MIT License</a><br>
+        Copyright (c) 2013 Benjamin Scherer
+      </p>
+      <p>
+        Feel free to contact me if you have any further questions.<br>
+        <a href="javascript:return false" onclick="mailTo('i.yv9ufpu')">b<span>&#064;</span>plue<span>&#046;</span>me</a>
+      </p>
+      
+    </article>
+
+
+    <article>
+      
+      <h1>1. CoaScript</h1>
+      
+      <p>A website developed with Coa needs at least two templates: <code>constant.coa.php</code> and <code>page.coa.php</code>.
+        The constant template contains the website header and a bit of configuration, the page template contains the website body.</p>
+      
+      <p>Create objects like <code>menu</code>, <code>css</code>, <code>content</code> or <code>image</code> to build your template. 
+        Assign attributes to them to specify their behaviour. You find all objects and attributes in the <a href="#reference">reference</a> below.</p>
+      
+      <p>You can use <a href="#variables">variables</a> like <code>$excerpt</code>, <code>$description</code> or <code>$title</code> to print the data you need.</p>
+      
+      <p class="less">Page template example:</p>
+  
+      <code class="block">
+        menu
+        <span>act = &lt;li class="act"&gt; | &lt;/li&gt;</span>
+        <br>
+        content
+        <span>wrap = &lt;article&gt;&lt;h1&gt;$title&lt;/h1&gt; | &lt;/article&gt;</span>
+        <br>
+        text
+          <span>value = &lt;footer&gt;this is the footer&lt;/footer&gt;</span>
+          <span>if = sub</span>
+        </code>
+  
+      <h3>Rules</h3>
+      
+      <ul>
+        <li>Objects have to be separated with an empty line. Even the last one!</li>
+        <li>Use <code>#</code> at the beginning of a line to comment attributes or even whole objects.
+        <li>Paths usually start in the folder "CoaTheme".</li>
+        <li>Wraps are always separated with a pipe, e.g. <code>&lt;b&gt;|&lt;/b&gt;</code></li>
+      </ul>   
+
+    </article>
+    
+    
+    <article>
+      
+      <h2>1.1 Examples</h2>
+      
+      <p class="less">Create a dynamic breadcrumb navigation:</p>
+      <code class="block">menu
+        <span>mode = breadcrumb</span>
+        <span>cur = &lt;li id="cur"&gt; | &lt;/li&gt;</span>
+      </code>
+      
+      <p class="less">Show the component "sidebar" on the homepage:</p>
+      <code class="block">content
+        <span>get = sidebar</span>
+        <span>only = index</span>
+      </code>
+      
+      <p class="less">Place other files into your template:</p>
+      <code class="block">place
+        <span>file = footer.php</span>
+        <span>wrap = &lt;footer&gt; | &lt;/footer&gt;</span>
+      </code>
+      
+      <p class="less">Use the constant template to include CSS and JavaScript files:</p>
+      <code class="block">css
+        <span>all = css/style.css</span>
+        <span>print = css/print.css</span>
+  
+        <br>script
+        <span>js = js/jquery.js</span>
+        <span>js1 = js/functions.js</span>
+      </code>
+      
+      <p class="less">Activate HTML cache and protect email links and strings:</p>
+      <code class="block">config
+        <span>cache = 1</span>
+        <span>protMail = 2</span>
+      </code>
+      
+    </article>
+    
+    
+    <article>    
+      
+      <h2 id="conditions">1.2 Conditions</h2>
+      
+      <h3>Show or Hide on Page(s)</h3>
+      
+      <p class="less">All objects can have the attributes <code>only</code> and <code>exclude</code>. 
+        Both can have comma separated page ids where to show or hide the object:</p>
+        
+      <code class="block">
+        meta
+        <span>description = This is the website description ...</span>
+        <span>only = index, about-us</span>
+        <span>#exclude = index</span>
+      </code>
+      
+      <h3>Show or Hide on Subpages and Translated Pages</h3>
+      
+      <p class="less">All objects can use <code>if</code> with the values <code>sub</code> or <code>!sub</code> to show or hide it on subpages:</p>
+      
+      <code class="block">
+        text
+        <span>value = &lt;h1&gt;$title&lt;/h1&gt;</span>
+        <span>if = !sub</span>
+      </code>
+      
+      <p class="less">and the values <code>translation</code> or <code>!translation</code> to show or hide it for a certain language:</p>
+      
+      <code class="block">
+        text
+        <span>value = &lt;h1 class="french"&gt;$title&lt;/h1&gt;</span>
+        <span>if = translation</span>
+      </code>
+      
+      <h3>Condition for Back-End Login</h3>
+      
+      <p class="less">You can use <code>login</code> or <code>!login</code> for logged in (or not logged in) back-end users:</p>
+      
+      <code class="block">
+        text
+        <span>value = still in production...</span>
+        <span>if = login</span>
+      </code>
+      
+    </article>
+    
+    
+    <article>        
+  
+      <h2 id="reference">1.3 Constant Objects</h2>
+      
+      <code class="block">
+        config
+        <span>loginReq = <em>if set to 1, login is required to see the website</em></span>
+        <span>minify = <em>if set to 1, source code is compressed</em></span>
+        <span>cache = <em>if set to 1, cache is enabled (disabled if logged in)</em></span>
+        <span>htmlTag = <em>enter custom string, e.g. &lt;html id="foo"&gt;</em></span>
+        <span>bodyTag = <em>use "basic" or "extended" for IE and no_js classes or enter custom string</em></span>
+        <span>extFiles = <em>set to "none" to exclude external files (e.g. lightbox CSS)</em></span>
+        <span>protMail = <em>1 protects email strings (use %m@d.com%), 2 also protects mailto links </em></span>
+        <span>wrapPage = <em>wraps the whole page template, e.g. &lt;div id="wrap"&gt; | &lt;/div&gt;</em></span>
+        <br>
+        
+        main
+        <span>title = <em>defines the website &lt;title&gt; tag</em></span>
+        <span>charset = <em>website charset, default is utf-8</em></span>
+        <span>language = <em>set language code for &lt;html&gt; tag (comma separated for translation)</em></span>
+        <br>
+        
+        meta
+        <span>viewport = <em>defines the content of the viewport &lt;meta&gt; tag</em></span>
+        <span>robots = <em>defines the content of the robots &lt;meta&gt; tag</em></span>
+        <span>description = <em>website meta description</em></span>
+        <span>keywords = <em>website meta keywords</em></span>
+        <span>headerGS = <em>set this to "none" to exclude the default GetSimple header</em></span>
+        <br>
+        
+        css
+        <span>wrap = <em>wraps each &lt;link&gt; tag, e.g. for conditional comments</em></span>
+        <span>all = <em>path to css file without media attribute, also numeric (all1 - all9)</em></span>
+        <span>screen = <em>path to css file with media="screen", also numeric (screen1 - screen9)</em></span>
+        <span>print = <em>path to css file with media="print", also numeric (print1 - print9)</em></span>
+        <span>handheld = <em>path to css file with media="handheld", also numeric (handheld1 - handheld9)</em></span>
+        <br>
+        
+        script
+        <span>wrap = <em>wraps each &lt;script&gt; tag, e.g. for conditional comments</em></span>
+        <span>js = <em>path to JavaScript file, also numeric (js1 - js9)</em></span>
+        <br>
+        
+        text
+        <span>value = <em>string to echo into the website header</em></span>
+        <span>wrap = <em>wraps the whole object</em></span>
+        <br>
+        
+        place
+        <span>file = <em>path to file that shall be included (php, html, txt or coa file)</em></span>
+        <span>wrap = <em>wraps the whole object</em></span>
+      </code>
+      
+    </article>
+    
+
+    <article>        
+      
+      <h2>1.4 Page Objects</h2>
+      
+      <code class="block">
+        text
+          <span>value = <em>string to echo</em></span>
+          <span>wrap = <em>wraps the whole object, e.g. &lt;p&gt; | &lt;/p&gt;</em></span>
+          <span>link = <em>define a link, optional target set after comma</em></span>
+          <span>class = <em>set class for link (string, variable or mixed)</em></span>
+        <br>
+          
+        content
+          <span>get = <em>get components or pages ("page: page_slug") instead of regular page content</em></span>
+          <span>wrap = <em>wraps the whole object, e.g. &lt;article&gt; | &lt;/article&gt;</em></span>
+        <br>
+        
+        image
+          <span>file = <em>path to the image</em></span>
+          <span>alt = <em>alternative title</em></span>
+          <span>title = <em>image title</em></span>
+          <span>wrap = <em>wraps the whole object</em></span>
+          <span>size = <em>define image width and height, separate with comma ("auto" for no attribute)</em></span>
+          <span>link = <em>define a link, optional target set after comma</em></span>
+        <br>
+        
+        menu
+          <span>mode = <em>use "breadcrumb" or "default" (native GetSimple menu)</em></span>
+          <span>list = <em>comma separated page ids, if set only these pages are shown </em></span>
+          <span>language = <em>comma separated menu texts for language menu (active if set) </em></span>
+          <span>title = <em>use 1 to show the title attribute of the &lt;a&gt; tags</em></span>
+          <span>wrap = <em>wraps the whole menu, default is &lt;ul&gt; | &lt;/ul&gt;</em></span>
+          <span>item = <em>wraps each menu item, default is &lt;li&gt; | &lt;/li&gt;</em></span>
+          <span>act = <em>wraps each active menu item, means current page and its parents </em></span>
+          <span>cur = <em>wraps the current menu item, e.g. &lt;li id="cur"&gt; | &lt;/li&gt;</em></span>
+        <br>
+        
+        place
+          <span>file = <em>path to file that shall be included (php, html, txt or coa file)</em></span>
+          <span>wrap = <em>wraps the whole object</em></span>
+        <br>
+        
+        script
+          <span>js = <em>path to JavaScript file to fire in the footer, also numeric (js1 - js9)</em></span>
+          <span>wrap = <em>wraps the &lt;script&gt; tag, e.g. for conditional comments</em></span>
+      </code>
+        
+    </article>
+    
+    
+    <article>    
+      
+      <h1>2. Tags</h1>
+      
+      <h2>2.1 Image Tags</h2>
+      
+      <p>These tags basically fetch images from a given directory. Display them as thumbnails, an image list or in a minimalist lightbox. Image captions, titles and alternatives are fetched from the file title. Paths always start at "data/uploads/".</p>
+      
+      <b>Lightbox</b>
+      
+      <ul>
+        <li>Use <code>[lightbox: path_to_folder]</code> to insert the Coa Lightbox.</li>
+        <li>Depends on jQuery and an automatically included lightbox script. (Deactivate external files with <code>extFiles</code>)</li>
+      </ul>
+      
+      
+      <b>Images</b>
+      
+      <ul>
+        <li>Use <code>[images: path_to_folder]</code> to insert an image list.</li>
+      </ul>
+      
+      <b>Thumbnails</b>
+      
+      <ul>
+        <li>Use <code>[thumbs: path_to_folder]</code> to insert a thumbnail list.</li>
+      </ul>
+      
+    </article>
+    
+    <article>
+      
+      <h2>2.2 Page Tag</h2>
+      
+      <p>Insert the page content of a given slug into another page.</p>
+      
+      <ul>  
+        <li>Use <code>[page: page_slug]</code></li>
+      </ul>
+    
+    </article>
+    
+    
+    <article>      
+      
+      <h1 id="variables">3. Variables</h1>
+      
+      <p>There a several variables available you can use universally.</p>
+      
+      <p>
+        <code>$title</code> -&gt; echo page title<br>
+        <code>$cleanTitle</code> -&gt; echo unformatted page title<br>
+        <code>$slug</code> -&gt; echo page slug<br>
+        <code>$keywords</code> -&gt; echo page meta keywords<br>
+        <code>$description</code> -&gt; echo page meta description<br>
+        <code>$date / $date(Y)</code> -&gt; echo page date (last change) with optional format in brackets, default is "j. M Y" <br>
+        <code>$excerpt / $excerpt(100)</code> -&gt; echo content excerpt with optional length in brackets, default is 100<br>
+        <code>$parent</code> -&gt; echo page parent<br>
+        <code>$siteName</code> -&gt; echo website name<br>
+        <code>$theme</code> -&gt; echo theme name
+      </p>
+    
+    </article>
+    
+    
+    <article>      
+      
+      <h1>4. Page Translation</h1>
+      
+      <p>With a click on "Translate Page" in the sidebar of Pages you can easily translate the page title, menu text and content of every page. All Coa Objects can be visible or invisible for a certain language. See <a href="#conditions">Conditions</a> for details.</p>
+      
+      <p class="less">Example language menu:</p>
+      
+      <code class="block">
+        menu
+          <span>language = English, German</span>
+          <span>act = &lt;li class="act"&gt; | &lt;/li&gt;</span>
+      </code>
+      
+      <h3>Settings</h3>
+      <p>You may hide the "Translate Page" button via "Coa Settings" (Plugins page).</p> 
+      <p>With the constant <code>TRANSLATIONURL</code> in "template.php" you can set the translated language name for the language parameter or pretty url path segment.</p>
+  
+      <p class="less">Set the &lt;html&gt; tag language codes:</p>
+      
+      <code class="block">
+        main
+          <span>language = en, de</span>
+      </code> 
+      
+      <h3>Pretty Urls</h3>
+      
+      <p>To rewrite translated urls with a virtual path segment, 
+        you need to set a custom permalink structure like <code>%slug%.html</code> or <code>%parent%/%slug%.html</code> and your ".htaccess" file needs to be updated. </p>
+        
+      <p class="less">Replace the default RewriteRule with:</p>
+      <code class="block">
+        RewriteRule ^([A-Za-z0-9_-]+).html index.php?id=$1 [QSA,L]<br>
+        RewriteRule ^([A-Za-z0-9_-]+)/([A-Za-z0-9_-]+).html index.php?id=$2&amp;L=$1 [QSA,L]<br>
+        RewriteRule ^([A-Za-z0-9_-]+)/([A-Za-z0-9_-]+)/([A-Za-z0-9-]+).html index.php?id=$3&amp;L=$1 [QSA,L]
+      </code>
+      
+      <p>If your website is in a subdirectory you need to set the constant <code>SUBDIRPATH</code> in "template.php" and update the <code>RewriteBase</code> in your ".htaccess" file as well.</p>
+    
+    </article>
+  
+    
+    <article>
+    
+      <h1>5. Change Log</h1>
+      
+      <b>Version 1.8</b>
+      <ul>
+        <li>New attribute "class" for text object</li>
+        <li>Links in menus have classes now</li>
+        <li>Consistent image order (Image Tags)</li>
+        <li>Storing cache files in "data/other/coa"</li>
+        <li>Solved a lot of PHP notices</li>
+        <li>Improved placing files</li>
+      </ul>
+      
+      
+      <b>Version 1.7.1</b>
+      <ul>
+        <li>Bugfix: CSS in IE</li>
+      </ul>
+      
+      
+      <b>Version 1.7</b>
+      <ul>
+        <li>Additional page content</li>
+        <li>Login condition</li>
+        <li>Coa Settings on Plugins page</li>
+        <li>New Tag: Get page content with [page:slug]</li>
+        <li>Bugfix: Image Tags HTML structure</li>
+        <li>Optional admin style</li>
+        <li>"place" into Constant template, too</li>
+      </ul>
+      
+      
+      <b>Version 1.6</b>
+      <ul>
+        <li>Fullscreen and responsive theme edit</li>
+        <li>Default suffix ".php" for Coa templates</li>
+        <li>External file for lightbox CSS</li>
+        <li>New config attribute "extFiles"</li>
+        <li>Bugfix: Caching translated pages in a subdirectory</li>
+        <li>Less CSS, no more layout</li>
+      </ul>
+      
+      
+      <b>Version 1.5.2</b>
+      <ul>
+       <li>Bugfix: Saving quotes in page translations</li>
+      </ul>
+      
+      
+      <b>Version 1.5.1</b>
+      <ul>
+        <li>Bugfix: Including Coa files with "place"</li>
+      </ul>
+      
+      
+      <b>Version 1.5</b>
+      <ul>
+        <li>Page Translation</li>
+        <li>Rearranged Coa to a plugin</li>
+        <li>Language menu</li>
+        <li>Conditions for page language</li>
+        <li>Improved caching</li>
+        <li>List and Breadcrumb menus show pages not added to menu</li>
+        <li>Lightbox bugfix and relocated script to "plugins/CoaPlugin/res/"</li>
+        <li>Removed webfont "Dosis"</li>
+      </ul>
+      
+      
+      <b>Version 1.4</b>
+      <ul>
+        <li>Global variables to echo data</li>
+        <li>Removed attribute "data" and the "%"-variables</li>
+        <li>Removed attribute "favicon", "base" and value "ieClass"</li>
+        <li>New attribute "bodyTag" </li>
+        <li>Responsive CSS</li>
+        <li>Lightbox script moved to Google Code</li>
+        <li>Default charset is utf-8</li>
+        <li>Renamed menu mode breadcrump to "breadcrumb"</li>
+        <li>Menu &lt;a&gt; tags have no title by default</li>
+        <li>Place object supports txt files</li>
+        <li>Less code, less bugs</li>
+      </ul>
+      
+      
+      <b>Version 1.3</b>
+      <ul>
+        <li>Menu from list</li>
+        <li>Improved documentation</li>
+        <li>Minimalist design</li>
+        <li>Get content of certain page</li>
+        <li>Media "handheld" for CSS object</li>
+      </ul>
+      
+      
+      <b>Version 1.2</b>
+      <ul>
+      <li>Coa Lightbox</li>
+        <li>Images and thumbnails from directory</li>
+      </ul>
+      
+      
+      <b>Version 1.1</b>
+      <ul>
+        <li>Custom HTML tag</li>
+        <li>Optional template suffix .coa.php</li>
+        <li>Reset and base CSS</li>
+      </ul>
+      
+      
+      <b>Version 1.0</b>
+      <ul>
+        <li>Coa template language</li>
+        <li>HTML cache</li>
+        <li>Source compression</li>
+        <li>Hierarchical menus</li>
+        <li>Breadcrumb navigation</li>
+        <li>Active and current menu items</li>
+        <li>Protection of email links and strings</li>
+        <li>HTML5 ready</li>
+      </ul>
+    
+    </article>
+  
+  </div>
+
+  <script>function mailTo(c){var a='lHfzn-QJwU36D.dCxYtre0KRTqAPXGZkcShg2oOW1@imMu5j8EF7vpBsyN+ab9_VLI4';var b=a.split("").sort().join("");var d="";for(var e=0;e<c.length;e++)d+=b.charAt(a.indexOf(c.charAt(e)));window.location.href="mailto:"+d+"?subject=About Coa"}</script>
+
+</body>
+</html>

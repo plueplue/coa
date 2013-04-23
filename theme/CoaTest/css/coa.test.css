@@ -1,0 +1,34 @@
+nav, article, figure {
+  margin-bottom: 3em;
+}
+
+.default a:hover {
+  color: #144FAE;
+}
+.cur > a {
+  font-weight: bold;
+}
+.act > a, .cur > a {
+  color: #000;
+}
+
+.breadcrumb ul {
+  list-style: none;
+  padding: 0;
+}
+.breadcrumb ul li {
+  display: inline-block
+}
+.breadcrumb li:after {
+  content: " » ";
+}
+
+#lang {
+  position: fixed;
+  right: 2em;
+  bottom: 2em;
+}
+
+.coa_images em {
+  display: block
+} 
