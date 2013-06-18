@@ -11,11 +11,13 @@ jQuery(function($) {
 // Get Prepared
 //////////////////
 
-// fadetime
+// vars
 var fade_lb = 460;
+var css_url = 'plugins/CoaPlugin/res/coa_lightbox.css';
 
 // include css
-$('head').append('<link rel="stylesheet" href="plugins/CoaPlugin/res/coa_lightbox.css">');
+if (document.createStyleSheet) { document.createStyleSheet(css_url); }
+else { $('head').append('<link rel="stylesheet" href="'+css_url+'">'); }
 
 // append divs
 $('body').append('<div id="lb_full"><div></div></div><div id="lb_preload"></div>');
