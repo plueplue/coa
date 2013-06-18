@@ -76,8 +76,11 @@ function makePage($path, $configOA, $isPlace) {
           $c2 = getPageData('add-content-2');
           $c3 = getPageData('add-content-3');
           
+          // content wrap begin
+          if( $c1 || $c2 || $c3) echo '<div class="c1 c_more">';
+          else echo '<div class="c1">';
+          
           // get content and translation
-          echo '<div class="c1">';
           if ($TRANS) echo getPageData('content');
           else get_page_content();
           echo '</div>';
