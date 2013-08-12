@@ -4,7 +4,8 @@ Coa, a GetSimple framework
 Coa is a powerful framework to create lean and functional templates.  
 It provides CoaScript and some useful out of the box features for fast and flexible development.
 
-Coa is available for [GetSimple](http://get-simple.info), the simplest Content Management System ever.
+Coa is available for [GetSimple](http://get-simple.info), the simplest Content Management System ever.  
+The latest version is Coa 1.9 b1.
 
 [Download](http://get-simple.info/extend/plugin/coa/375/) | 
 [Manual](http://coa.plue.me) | 
