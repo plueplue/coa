@@ -5,14 +5,13 @@ config
   #cache = 1
 
 main
-  title = $title – $siteName
+  title = $siteName: $title
   
 meta
-  robots = index, follow
-  viewport = width=device-width, initial-scale=1.0
+  viewport = width=device-width,initial-scale=1.0
   
 css
-  all = css/crack.css
+  all = css/crack.min.css
 
 script
   js = js/respondjs+html5shiv.js

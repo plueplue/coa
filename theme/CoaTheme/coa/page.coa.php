@@ -6,12 +6,12 @@ menu
 
 content
   wrap = <article><h2>$title</h2> | </article>
-  
+
 content
   get = sidebar
   wrap = <aside> | </aside>
-  
-script
-  #js = https://ajax.googleapis.com/ajax/libs/jquery/1.10.1/jquery.min.js
-  
+
+place
+  file = coa/footer.coa.php
+
 ## End

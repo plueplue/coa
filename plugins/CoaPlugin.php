@@ -1,7 +1,7 @@
 <?php
 /*
 Plugin Name: Coa Plugin
-Version: 1.8.1
+Version: 1.9 b1
 Author: Benjamin Scherer
 Author URI: http://www.plue.me/
 License: MIT License
@@ -18,7 +18,7 @@ $coa_settings_file = GSDATAOTHERPATH .'CoaSettings.xml';
 register_plugin(
   $thisfileCoa,
   'Coa Plugin',
-  '1.8.1',
+  '1.9 b1',
   'Benjamin Scherer',
   'http://www.plue.me/',
   'Coa is a powerful framework to create lean and functional templates. It provides CoaScript and some useful out of the box features for fast and flexible development.',
@@ -254,33 +254,16 @@ function edit_page_footer() {
   if (defined('GSEDITORTOOL')) { $EDTOOL = GSEDITORTOOL; } else {  $EDTOOL = 'basic'; }
   if (defined('GSEDITOROPTIONS') && trim(GSEDITOROPTIONS)!="") { $EDOPTIONS = ", ".GSEDITOROPTIONS; } else {  $EDOPTIONS = ''; }
   
-  // define toolbar
-  if ($EDTOOL == 'advanced') {
-    $toolbar = "['Bold', 'Italic', 'Underline', 'NumberedList', 'BulletedList', 'JustifyLeft','JustifyCenter'".
-      ",'JustifyRight','JustifyBlock', 'Table', 'TextColor', 'BGColor', 'Link', 'Unlink', 'Image', 'RemoveFormat',".
-      "'Source'], '/', ['Styles','Format','Font','FontSize']";
-  } elseif ($EDTOOL == 'basic') {
-    $toolbar = "['Bold', 'Italic', 'Underline', 'NumberedList', 'BulletedList', 'JustifyLeft','JustifyCenter',".
-      "'JustifyRight','JustifyBlock', 'Link', 'Unlink', 'Image', 'RemoveFormat', 'Source']";
-  } else {
-    $toolbar = GSEDITORTOOL;
-  }
-  
   // enable translation editor
   if ($HTMLEDITOR != '') {
     echo '<script type="text/javascript">
       if( document.getElementById("post-content-translation") ) {
-      var editor = CKEDITOR.replace( \'post-content-translation\', {
+      var editor0 = CKEDITOR.replace( \'post-content-translation\', {
         skin : \'getsimple\',forcePasteAsPlainText : true,language : \''.$EDLANG.'\',defaultLanguage : \'en\',';
     
-    echo 'entities : false,uiColor: \'#FFFFFF\',height: \''.$EDHEIGHT.'\',baseHref: \''.$SITEURL.'\',toolbar: ['.$toolbar.']'.$EDOPTIONS.',tabSpaces:10,filebrowserBrowseUrl : \'filebrowser.php?type=all\',filebrowserImageBrowseUrl : \'filebrowser.php?type=images\',filebrowserWindowWidth : \'730\',filebrowserWindowHeight : \'500\'
+    echo 'entities : false,uiColor: \'#FFFFFF\',height: \''.$EDHEIGHT.'\',baseHref: \''.$SITEURL.'\',toolbar: \'basic\''.$EDOPTIONS.',tabSpaces:10,filebrowserBrowseUrl : \'filebrowser.php?type=all\',filebrowserImageBrowseUrl : \'filebrowser.php?type=images\',filebrowserWindowWidth : \'730\',filebrowserWindowHeight : \'500\'
       });
       CKEDITOR.instances["post-content-translation"].on("instanceReady", InstanceReadyEvent);
-      function InstanceReadyEvent() {
-        this.document.on("keyup", function () {
-          $(\'#editform\').trigger(\'change\');
-        });
-      }
       }
       </script>';
     
@@ -291,13 +274,8 @@ function edit_page_footer() {
         var editor'.$i.' = CKEDITOR.replace( \'add-content-'.$i.'\', {
           skin : \'getsimple\',forcePasteAsPlainText : true,language : \''.$EDLANG.'\',defaultLanguage : \'en\',';
       
-      echo 'entities : false,uiColor: \'#FFFFFF\',height: \''.$EDHEIGHT.'\',baseHref: \''.$SITEURL.'\',toolbar: ['.$toolbar.']'.$EDOPTIONS.',tabSpaces:10,filebrowserBrowseUrl : \'filebrowser.php?type=all\',filebrowserImageBrowseUrl : \'filebrowser.php?type=images\',filebrowserWindowWidth : \'730\',filebrowserWindowHeight : \'500\'});
+      echo 'entities : false,uiColor: \'#FFFFFF\',height: \''.$EDHEIGHT.'\',baseHref: \''.$SITEURL.'\',toolbar: \'basic\''.$EDOPTIONS.',tabSpaces:10,filebrowserBrowseUrl : \'filebrowser.php?type=all\',filebrowserImageBrowseUrl : \'filebrowser.php?type=images\',filebrowserWindowWidth : \'730\',filebrowserWindowHeight : \'500\'});
         CKEDITOR.instances["add-content-'.$i.'"].on("instanceReady", InstanceReadyEvent);
-        function InstanceReadyEvent() {
-          this.document.on("keyup", function () {
-            $(\'#editform\').trigger(\'change\');
-          });
-        }
         }
         </script>';
       }
