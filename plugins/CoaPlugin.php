@@ -1,7 +1,7 @@
 <?php
 /*
 Plugin Name: Coa Plugin
-Version: 1.9
+Version: 1.10 Beta
 Author: Benjamin Scherer
 Author URI: http://www.plue.me/
 License: MIT License
@@ -18,7 +18,7 @@ $coa_settings_file = GSDATAOTHERPATH .'CoaSettings.xml';
 register_plugin(
   $thisfileCoa,
   'Coa Plugin',
-  '1.9',
+  '1.10 Beta',
   'Benjamin Scherer',
   'http://www.plue.me/',
   'Coa is a powerful framework to create lean and functional templates. It provides CoaScript and some useful out of the box features for fast and flexible development.',
