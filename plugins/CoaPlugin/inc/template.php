@@ -75,20 +75,31 @@ function makePage($path, $configOA, $isPlace) {
           $c1 = getPageData('add-content-1');
           $c2 = getPageData('add-content-2');
           $c3 = getPageData('add-content-3');
+          $c1L = getPageData('add-content-translation-1');
+          $c2L = getPageData('add-content-translation-2');
+          $c3L = getPageData('add-content-translation-3');
           
           // content wrap begin
           if( $c1 || $c2 || $c3) echo '<div class="c1 c_more">';
           else echo '<div class="c1">';
           
           // get content and translation
-          if ($TRANS) echo getPageData('content');
-          else get_page_content();
+          if ($TRANS) {
+            echo getPageData('content');
+            
+            if( $c1L ) echo '<div class="c2">'.$c1L.'</div>';
+            if( $c2L ) echo '<div class="c3">'.$c2L.'</div>';
+            if( $c3L ) echo '<div class="c4">'.$c3L.'</div>';
+
+          }
+          else {
+            get_page_content();
+            
+            if( $c1 ) echo '<div class="c2">'.$c1.'</div>';
+            if( $c2 ) echo '<div class="c3">'.$c2.'</div>';
+            if( $c3 ) echo '<div class="c4">'.$c3.'</div>';
+          }
           echo '</div>';
-          
-          // get additional content
-          if( $c1 ) echo '<div class="c2">'.$c1.'</div>';
-          if( $c2 ) echo '<div class="c3">'.$c2.'</div>';
-          if( $c3 ) echo '<div class="c4">'.$c3.'</div>';
         }
         
         // get content of certain page

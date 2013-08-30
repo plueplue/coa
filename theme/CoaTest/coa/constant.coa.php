@@ -42,7 +42,7 @@ text
 ## CSS
 
 css
-  all = ../CoaTheme/css/crack.css
+  all = ../CoaTheme/css/crack.min.css
   all1 = css/coa.test.css
 
 css

@@ -44,6 +44,8 @@ if($('#sb_CoaPlugin').length) {
 			// animate editor fields
 			$('#cke_post-content-translation').animate({'height':editH}, 500).css('border','1px solid #999');
 			$('#cke_post-content').animate({'height':'0'}, 500).animate({'border':'0'}, 500);
+			$('#cke_add-content-translation-1,#cke_add-content-translation-2,#cke_add-content-translation-3').animate({'height':editH}, 500).css('border','1px solid #999');
+			$('#cke_add-content-1,#cke_add-content-2,#cke_add-content-3').animate({'height':'0'}, 500).animate({'border':'0'}, 500);
 		}
 	
 		// show default page
@@ -70,6 +72,8 @@ if($('#sb_CoaPlugin').length) {
 			// animate editor fields
 			$('#cke_post-content-translation').animate({'height':'0'}).animate({'border':'0'}, 500);
 			$('#cke_post-content').css('border','1px solid #999').animate({'height': editH});
+			$('#cke_add-content-translation-1,#cke_add-content-translation-2,#cke_add-content-translation-3').animate({'height':'0'}).animate({'border':'0'}, 500);
+			$('#cke_add-content-1,#cke_add-content-2,#cke_add-content-3').css('border','1px solid #999').animate({'height': editH});
 		}
 		return false;
 	});

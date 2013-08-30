@@ -220,24 +220,22 @@ function save_data() {
     $note->addCData($translation);
   }
   
-  // save add-content 1
-  if(isset($_POST['add-content-1']) && $_POST['add-content-1'] != '') {
-    $addcontent1 = safe_slash_html($_POST['add-content-1']);
-    $note = $xml->addChild('addContent1');
-    $note->addCData($addcontent1);
+  // save add content editors and translations
+  for( $i=0; $i<4; ++$i ) {
+  
+    if(isset($_POST['add-content-'.$i]) && $_POST['add-content-'.$i] != '') {
+      $content = safe_slash_html($_POST['add-content-'.$i]);
+      $note = $xml->addChild('addContent'.$i);
+      $note->addCData($content);
+    }
+    if(isset($_POST['add-content-translation-'.$i]) && $_POST['add-content-translation-'.$i] != '') {
+      $content = safe_slash_html($_POST['add-content-translation-'.$i]);
+      $note = $xml->addChild('addContent'.$i.'L');
+      $note->addCData($content);
+    }
+    
   }
-  // save add-content 2
-  if(isset($_POST['add-content-2']) && $_POST['add-content-2'] != '') {
-    $addcontent2 = safe_slash_html($_POST['add-content-2']);
-    $note = $xml->addChild('addContent2');
-    $note->addCData($addcontent2);
-  }
-  // save add-content 3
-  if(isset($_POST['add-content-3']) && $_POST['add-content-3'] != '') {
-    $addcontent3 = safe_slash_html($_POST['add-content-3']);
-    $note = $xml->addChild('addContent3');
-    $note->addCData($addcontent3);
-  }
+
 }
 
 
@@ -254,30 +252,45 @@ function edit_page_footer() {
   if (defined('GSEDITORTOOL')) { $EDTOOL = GSEDITORTOOL; } else {  $EDTOOL = 'basic'; }
   if (defined('GSEDITOROPTIONS') && trim(GSEDITOROPTIONS)!="") { $EDOPTIONS = ", ".GSEDITOROPTIONS; } else {  $EDOPTIONS = ''; }
   
+  // define toolbar
+  if ($EDTOOL == 'advanced') {
+   $toolbar = "['Bold', 'Italic', 'Underline', 'NumberedList', 'BulletedList', 'JustifyLeft','JustifyCenter'".
+     ",'JustifyRight','JustifyBlock', 'Table', 'TextColor', 'BGColor', 'Link', 'Unlink', 'Image', 'RemoveFormat',".
+     "'Source'], '/', ['Styles','Format','Font','FontSize']";
+  } elseif ($EDTOOL == 'basic') {
+   $toolbar = "['Bold', 'Italic', 'Underline', 'NumberedList', 'BulletedList', 'JustifyLeft','JustifyCenter',".
+     "'JustifyRight','JustifyBlock', 'Link', 'Unlink', 'Image', 'RemoveFormat', 'Source']";
+  } else {
+   $toolbar = GSEDITORTOOL;
+  }
+  
+  // prepare editor settings
+  $editorSetup = 'skin : \'getsimple\',forcePasteAsPlainText : true,language : \''.$EDLANG.'\',defaultLanguage : \'en\',
+    entities : false,uiColor: \'#FFFFFF\',height: \''.$EDHEIGHT.'\',baseHref: \''.$SITEURL.'\',
+    toolbar: ['.$toolbar.']'.$EDOPTIONS.',tabSpaces:10,filebrowserBrowseUrl : \'filebrowser.php?type=all\',
+    filebrowserImageBrowseUrl : \'filebrowser.php?type=images\',filebrowserWindowWidth : \'730\',filebrowserWindowHeight : \'500\'});';
+    
   // enable translation editor
   if ($HTMLEDITOR != '') {
     echo '<script type="text/javascript">
       if( document.getElementById("post-content-translation") ) {
-      var editor0 = CKEDITOR.replace( \'post-content-translation\', {
-        skin : \'getsimple\',forcePasteAsPlainText : true,language : \''.$EDLANG.'\',defaultLanguage : \'en\',';
-    
-    echo 'entities : false,uiColor: \'#FFFFFF\',height: \''.$EDHEIGHT.'\',baseHref: \''.$SITEURL.'\',toolbar: \'basic\''.$EDOPTIONS.',tabSpaces:10,filebrowserBrowseUrl : \'filebrowser.php?type=all\',filebrowserImageBrowseUrl : \'filebrowser.php?type=images\',filebrowserWindowWidth : \'730\',filebrowserWindowHeight : \'500\'
-      });
-      CKEDITOR.instances["post-content-translation"].on("instanceReady", InstanceReadyEvent);
-      }
-      </script>';
+        var editor0 = CKEDITOR.replace( \'post-content-translation\', {'
+          .$editorSetup.' CKEDITOR.instances["post-content-translation"].on("instanceReady", InstanceReadyEvent);
+      } </script>';
     
     // enable 3 add content editors
     for($i=1;$i<4;++$i) {
       echo '<script type="text/javascript">
         if( document.getElementById("add-content-'.$i.'") ) {
-        var editor'.$i.' = CKEDITOR.replace( \'add-content-'.$i.'\', {
-          skin : \'getsimple\',forcePasteAsPlainText : true,language : \''.$EDLANG.'\',defaultLanguage : \'en\',';
-      
-      echo 'entities : false,uiColor: \'#FFFFFF\',height: \''.$EDHEIGHT.'\',baseHref: \''.$SITEURL.'\',toolbar: \'basic\''.$EDOPTIONS.',tabSpaces:10,filebrowserBrowseUrl : \'filebrowser.php?type=all\',filebrowserImageBrowseUrl : \'filebrowser.php?type=images\',filebrowserWindowWidth : \'730\',filebrowserWindowHeight : \'500\'});
-        CKEDITOR.instances["add-content-'.$i.'"].on("instanceReady", InstanceReadyEvent);
-        }
-        </script>';
+          var editor'.$i.' = CKEDITOR.replace( \'add-content-'.$i.'\', {'
+            .$editorSetup.'CKEDITOR.instances["add-content-'.$i.'"].on("instanceReady", InstanceReadyEvent);
+        } </script>
+        
+        <script type="text/javascript">
+        if( document.getElementById("add-content-translation-'.$i.'") ) {
+          var editor'.$i.' = CKEDITOR.replace( \'add-content-translation-'.$i.'\', {'
+            .$editorSetup.' CKEDITOR.instances["add-content-translation-'.$i.'"].on("instanceReady", InstanceReadyEvent);
+        } </script>';
     }
     
     // add link type "local page" to new editors
@@ -424,10 +437,12 @@ function get_content_editor($num) {
   
   $data = getXML($path . $id .'.xml');
   $field = 'addContent'.$num;
+  $fieldL = $field.'L';
   
   if( $num<4 ) {
     if( isset($data->$field) || isset($_GET['addcontent']) ) {
-     return '<textarea class="add-content" id="add-content-'.$num.'" name="add-content-'.$num.'">'. stripslashes($data->$field) .'</textarea>'; 
+     return '<textarea class="add-content" id="add-content-'.$num.'" name="add-content-'.$num.'">'. stripslashes($data->$field) .'</textarea>
+       <textarea class="add-content-translation" id="add-content-translation-'.$num.'" name="add-content-translation-'.$num.'">'. stripslashes($data->$fieldL) .'</textarea>'; 
     }
   }
 }
@@ -446,6 +461,6 @@ function backend_css() {
 }
 
 function be_styles() {
-  echo '<link rel="stylesheet" href="../plugins/CoaPlugin/res/be_styles.css"></link>';
+  echo '<link rel="stylesheet" href="../plugins/CoaPlugin/res/admin_styles.css"></link>';
 }
 ?>

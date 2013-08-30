@@ -6,7 +6,8 @@ http://coa.plue.me
 
 /* @group translation editor */
 
-#cke_post-content-translation {
+#cke_post-content-translation, 
+#cke_add-content-translation-1, #cke_add-content-translation-2, #cke_add-content-translation-3 {
 border: 1px solid #999;
 border: 0;
 -moz-border-radius: 4px 4px 0 0;
@@ -14,27 +15,32 @@ border: 0;
 -webkit-border-radius: 4px 4px 0 0;
 border-radius: 4px 4px 0 0;
 overflow: hidden;
-margin-bottom: 2em;
 display: block;
 clear: both;
 height: 0;
+margin-bottom: 2em;
 }
 
-#cke_top_post-content-translation {
+#cke_top_post-content-translation,
+#cke_top_add-content-translation-1, #cke_top_add-content-translation-2, #cke_top_add-content-translation-3 {
 	border-bottom: 1px solid #CF3805;
 	background: #eeeeee;
 	background: -moz-linear-gradient(top, #eeeeee, #e2e2e2);
 	background: -webkit-gradient(linear, left top, left bottom, from(#eeeeee), to(#e2e2e2));
 }
-#cke_bottom_post-content-translation {
+#cke_bottom_post-content-translation,
+#cke_bottom_add-content-translation-1, #cke_bottom_add-content-translation-2, #cke_bottom_add-content-translation-3 {
 	border-top: 1px solid #999;
 	background: #f6f6f6;
 }
-#cke_top_post-content-translation .cke_toolbar {
+#cke_top_post-content-translation .cke_toolbar,
+#cke_top_add-content-translation-1 .cke_toolbar, #cke_top_add-content-translation-2 .cke_toolbar, #cke_top_add-content-translation-3 .cke_toolbar {
 	margin: 2px 0 0px 2px;
 	background: transparent;	
 }
-#cke_top_post-content-translation .cke_toolbox, #cke_top_post-content-translation .cke_toolgroup {
+#cke_top_post-content-translation .cke_toolbox, #cke_top_post-content-translation .cke_toolgroup,
+#cke_top_add-content-translation-1 .cke_toolbox, #cke_top_add-content-translation-2 .cke_toolbox, #cke_top_add-content-translation-3 .cke_toolbox,
+#cke_top_add-content-translation-1 .cke_toolgroup, #cke_top_add-content-translation-2 .cke_toolgroup, #cke_top_add-content-translation-3 .cke_toolgroup {
 background: transparent;
 }
 
@@ -53,7 +59,7 @@ border:1px solid #999;
 -webkit-border-radius: 4px 4px 0 0;
 border-radius:4px 4px 0 0;
 overflow:hidden;
-margin-bottom: 2em;
+margin-bottom: 0;
 }
 #cke_bottom_add-content-1, #cke_bottom_add-content-2, #cke_bottom_add-content-3 {
 border-top:1px solid #eee;

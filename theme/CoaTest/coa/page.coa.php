@@ -6,6 +6,24 @@
 place
   file = coa/conditions.coa.php
   wrap = <h1>Conditions</h1><article> | </article>
+    
+
+## Content
+
+content
+  wrap = <h1>Content</h1><article><b>Regular Content:</b> | </article>
+  
+content
+  get = sidebar
+  wrap = <article><b>Sidebar Content:</b> | </article>
+
+#content
+  get = page: index
+  wrap = <article><b>Content from page index:</b> | </article>
+  
+#text
+  value = [page: index]
+  wrap = <article><b>Content from page index with Page Tag:</b> | </article>
 
 
 ## Menu
@@ -13,7 +31,7 @@ place
 place
   file = coa/menu.coa.php
   wrap = <h1>Menus</h1> |
-    
+  
 
 ## Text
 
@@ -41,24 +59,6 @@ image
   title = image title
   size = 150, auto
   link = index, _self
-
-
-## Content
-
-content
-  wrap = <h1>Content</h1><article><b>Regular Content:</b> | </article>
-  
-content
-  get = sidebar
-  wrap = <article><b>Sidebar Content:</b> | </article>
-
-#content
-  get = page: index
-  wrap = <article><b>Content from page index:</b> | </article>
-  
-#text
-  value = [page: index]
-  wrap = <article><b>Content from page index with Page Tag:</b> | </article>
 
 
 ## Place

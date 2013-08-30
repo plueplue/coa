@@ -157,9 +157,9 @@ function getContentOfPage($slug) {
     $return = '<div class="get1 '.$data->url.'">'.$data->translationContent.'</div>';
     
     // show additional content on any language until it is translatable
-    if( $data->addContent1 ) $return.= '<div class="get2 '.$data->url.'">'.$data->addContent1.'</div>';
-    if( $data->addContent2 ) $return.= '<div class="get3 '.$data->url.'">'.$data->addContent2.'</div>';
-    if( $data->addContent3 ) $return.= '<div class="get4 '.$data->url.'">'.$data->addContent3.'</div>';
+    if( $data->addContent1L ) $return.= '<div class="get2 '.$data->url.'">'.$data->addContent1L.'</div>';
+    if( $data->addContent2L ) $return.= '<div class="get3 '.$data->url.'">'.$data->addContent2L.'</div>';
+    if( $data->addContent3L ) $return.= '<div class="get4 '.$data->url.'">'.$data->addContent3L.'</div>';
     
     return stripslashes(htmlspecialchars_decode($return,ENT_QUOTES));
   }
@@ -195,5 +195,8 @@ function getPageData($elem,$getThis='curPid') {
   elseif($elem == 'add-content-1') return stripslashes(htmlspecialchars_decode($data->addContent1,ENT_QUOTES));
   elseif($elem == 'add-content-2') return stripslashes(htmlspecialchars_decode($data->addContent2,ENT_QUOTES));
   elseif($elem == 'add-content-3') return stripslashes(htmlspecialchars_decode($data->addContent3,ENT_QUOTES));
+  elseif($elem == 'add-content-translation-1') return stripslashes(htmlspecialchars_decode($data->addContent1L,ENT_QUOTES));
+  elseif($elem == 'add-content-translation-2') return stripslashes(htmlspecialchars_decode($data->addContent2L,ENT_QUOTES));
+  elseif($elem == 'add-content-translation-3') return stripslashes(htmlspecialchars_decode($data->addContent3L,ENT_QUOTES));
 }
 ?>
