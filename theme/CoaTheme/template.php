@@ -2,7 +2,7 @@
 /*
 @File: template.php
 @Package: GetSimple
-@Action: Coa 1.10 Beta for GetSimple 3.2.3
+@Action: Coa 1.10 Beta
 */
 
 /*
@@ -17,21 +17,10 @@ Copyright (c) 2013 Benjamin Scherer
 http://coa.plue.me
 */
 
-# Theme Path
-define('THEMEPATH', 'theme/'.$TEMPLATE.'/');
-
-# Page Template Path
-define('PAGETEMPLATE', THEMEPATH.'coa/page.coa.php');
-
-# Constant Template Path
-define('CONSTANTTEMPLATE', THEMEPATH.'coa/constant.coa.php');
-
-# Translation Name for URL
-define('TRANSLATIONURL', 'de');
-
-# Subdirectory Rewrite Path
-define('SUBDIRPATH', '/');
+# Define a non-standard page template
+//$pagetemplate = 'page-contact.coa.php';
 
 # Include Coa
+include 'theme/'.$TEMPLATE.'/config.inc.php';
 include 'plugins/CoaPlugin/coa.php';
 ?>
