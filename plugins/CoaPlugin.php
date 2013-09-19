@@ -22,7 +22,7 @@ register_plugin(
   'Benjamin Scherer',
   'http://www.plue.me/',
   'Coa is a powerful framework to create lean and functional templates. It provides CoaScript and some useful out of the box features for fast and flexible development.',
-  'plugins',
+  'settings',
   'coa_settings'
 );
 
@@ -50,7 +50,7 @@ else {
 ////////////
 
 // settings
-add_action('plugins-sidebar','createSideMenu',array($thisfileCoa, i18n_r($thisfileCoa.'/COA_SETTINGS')));
+add_action('settings-sidebar','createSideMenu',array($thisfileCoa, i18n_r($thisfileCoa.'/COA_SETTINGS')));
 if( strstr($_SERVER["REQUEST_URI"], 'load.php?id=CoaPlugin') ) add_action('header','backend_css');
 
 // styles
@@ -93,6 +93,8 @@ function coa_settings() {
 		if( isset($_POST['fullscreen_off']) && $fullscreen_off = $_POST['fullscreen_off'] ) $xml->addChild('fullscreen_off', $fullscreen_off);
 		if( isset($_POST['addcontent_off']) && $addcontent_off = $_POST['addcontent_off']) $xml->addChild('addcontent_off', $addcontent_off);
 		if( isset($_POST['styles_off']) && $styles_off = $_POST['styles_off']) $xml->addChild('styles_off', $styles_off);
+		// prevent invalid xml when everythings is off
+		else $xml->addChild('styles_off', 'off');
 		
 		if ( $xml->asXML($coa_settings_file) ) {
 		  $data = getXML($coa_settings_file);
