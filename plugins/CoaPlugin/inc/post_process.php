@@ -10,6 +10,7 @@ Process Image Tags, Cache and Minify Source, Replace Variables, Protect Mail Add
 
 function makeTag($buffer, $tag, $what) {
   global $configOA;
+  $i = 0;
   
   // wrap begin and $cut
   if($what == 'images:') { $output = '<span class="coa_images">'; $cut = 7; }
@@ -35,7 +36,7 @@ function makeTag($buffer, $tag, $what) {
       // sort files
       $files = array();
       while ($files[] = readdir($dh));
-      sort($files);
+      natsort($files);
     
       foreach ($files as $file) {
         $last4 = substr($file, -4);
@@ -43,20 +44,21 @@ function makeTag($buffer, $tag, $what) {
 
         // make linked images with alt attribut
         if (in_array($last4, $img_ext)) {
+          ++$i;
           $alt_temp = str_replace($img_ext, '', $file);
           $alt = preg_replace('/[-._]/', ' ', $alt_temp);
 
           if($what == 'lightbox:') {
-            $output .= '<a href="data/uploads/'.$value.$file.'">';
-            $output .= '<img src="data/thumbs/'.$value.'thumbnail.'.$file.'" alt="'.$alt.'"></a>';
+            $output .= '<a class="n'.$i.'" href="data/uploads/'.$value.$file.'">';
+            $output .= '<img src="data/uploads/'.$value.$file.'" alt="'.$alt.'"></a>';
           }
           if($what == 'images:') {
-            $output .= '<span class="item"><em>'.$alt.'</em><img src="'.'data/uploads/'.$value.$file.'" alt="'.$alt.'"></span>';
+            $output .= '<span class="item n'.$i.'"><em>'.$alt.'</em><img src="'.'data/uploads/'.$value.$file.'" alt="'.$alt.'"></span>';
           }
           if($what == 'thumbs:') {
             if(substr($file, 0, 9) == 'thumbnail') {
               $alt = trim(substr($alt, 9));
-              $output .= '<span class="item"><em>'.$alt.'</em><img src="data/thumbs/'.$value.$file.'" alt="'.$alt.'"></span>';
+              $output .= '<span class="item n'.$i.'"><em>'.$alt.'</em><img src="data/thumbs/'.$value.$file.'" alt="'.$alt.'"></span>';
             }  
           }      
         }

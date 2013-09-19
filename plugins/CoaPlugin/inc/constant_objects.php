@@ -84,7 +84,7 @@ function mainObj($OA,$configOA) {
   else echo '<title>$title</title>'."\n";
       
   // attribute "base" 
-  echo '<base href="'.get_site_url(false).'">'."\n";
+  if(isset($OA['base']) && $OA['base']!=='none' || !isset($OA['base'])) echo '<base href="'.get_site_url(false).'">'."\n";
 }
 
 

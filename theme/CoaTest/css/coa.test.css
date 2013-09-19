@@ -1,4 +1,4 @@
-nav, article, figure {
+nav, article, #wrap figure {
   margin-bottom: 3em;
 }
 
@@ -29,6 +29,7 @@ nav, article, figure {
   bottom: 2em;
 }
 
-.coa_images em {
+.coa_images, .coa_images .item, .coa_images em,
+.coa_thumbs, .coa_thumbs .item, .coa_thumbs em {
   display: block
 } 

@@ -20,12 +20,9 @@ if (document.createStyleSheet) { document.createStyleSheet(css_url); }
 else { $('head').append('<link rel="stylesheet" href="'+css_url+'">'); }
 
 // append divs
-$('body').append('<div id="lb_full"><div></div></div><div id="lb_preload"></div>');
+$('body').append('<div id="lb_full"><div></div></div>');
 
-// preload images
-$('.coa_lb a').each(function() {
-    $('#lb_preload').append('<img src="' + $(this).attr('href') + '">');
-});
+
 
 /////////////////////////////////////
 // Click Thumbnail
