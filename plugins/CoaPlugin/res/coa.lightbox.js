@@ -39,7 +39,7 @@ $('.coa_lb a img').click(function() {
     $('#lb_full > div').append('<figure>' + img + '<figcaption>' + desc + '</figcaption></figure>');
 
     // append and activate lightbox nav
-    $('#lb_full > div').append('<div id="lb_nav"><span class="prev">&lt;</span><span class="next">&gt;</span><span class="close">x</span></div>');
+    $('#lb_full > div').append('<div id="lb_nav"><span class="prev">&lt;</span><span class="close">x</span><span class="next">&gt;</span></div>');
     activateNav();
     
     // fade in lightbox wrap

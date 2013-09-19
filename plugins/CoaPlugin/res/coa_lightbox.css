@@ -82,14 +82,15 @@ http://coa.plue.me
 
 #lb_nav span {
   cursor: pointer;
-  font-size: 1.2em;
+  font-size: 1.1em;
   padding: 5px 10px;
   width: 15px;
   text-align: center;
   display: inline-block;
 }
 #lb_nav span.close {
-  padding: 5px 7px;
+  padding: 5px 20px;
+  font-size: 1.2em;
 }
 #lb_nav span:hover{
   color: #333;
