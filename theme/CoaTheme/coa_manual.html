@@ -5,7 +5,6 @@
   <!--[if IE]><meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1"><![endif]-->
   <title>Coa, a GetSimple framework</title>
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta name="robots" content="index, follow">
   <meta name="author" content="Benjamin Scherer">
   <meta name="description" content="Coa is a powerful framework to create lean and functional templates. It provides CoaScript and some useful out of the box features for fast and flexible development.">
   <!--[if lt IE 9]><script src="http://html5shiv.googlecode.com/svn/trunk/html5.js"></script><![endif]-->
@@ -13,59 +12,52 @@
   
   <style type="text/css">
     
-    /*
-    CRACK CSS v10.4
-    www.plue.me/crack
-    MIT License
-    */
+    /*! normalize.css v2.1.3 | MIT License | git.io/normalize */
+    article,aside,details,figcaption,figure,footer,header,hgroup,main,nav,section,summary{display:block}audio,canvas,video{display:inline-block}audio:not([controls]){display:none;height:0}[hidden],template{display:none}html{font-family:sans-serif;-ms-text-size-adjust:100%;-webkit-text-size-adjust:100%}body{margin:0}a{background:transparent}a:focus{outline:thin dotted}a:active,a:hover{outline:0}h1{font-size:2em;margin:0.67em 0}abbr[title]{border-bottom:1px dotted}b,strong{font-weight:bold}dfn{font-style:italic}hr{-moz-box-sizing:content-box;box-sizing:content-box;height:0}mark{background:#ff0;color:#000}code,kbd,pre,samp{font-family:monospace,serif;font-size:1em}pre{white-space:pre-wrap}q{quotes:"\201C""\201D""\2018""\2019"}small{font-size:80%}sub,sup{font-size:75%;line-height:0;position:relative;vertical-align:baseline}sup{top:-0.5em}sub{bottom:-0.25em}img{border:0}svg:not(:root){overflow:hidden}figure{margin:0}fieldset{border:1px solid #c0c0c0;margin:0 2px;padding:0.35em 0.625em 0.75em}legend{border:0;padding:0}button,input,select,textarea{font-family:inherit;font-size:100%;margin:0}button,input{line-height:normal}button,select{text-transform:none}button,html input[type="button"],input[type="reset"],input[type="submit"]{-webkit-appearance:button;cursor:pointer}button[disabled],html input[disabled]{cursor:default}input[type="checkbox"],input[type="radio"]{box-sizing:border-box;padding:0}input[type="search"]{-webkit-appearance:textfield;-moz-box-sizing:content-box;-webkit-box-sizing:content-box;box-sizing:content-box}input[type="search"]::-webkit-search-cancel-button,input[type="search"]::-webkit-search-decoration{-webkit-appearance:none}button::-moz-focus-inner,input::-moz-focus-inner{border:0;padding:0}textarea{overflow:auto;vertical-align:top}table{border-collapse:collapse;border-spacing:0}
     
-    /*! normalize.css v2.1.0 | MIT License | git.io/normalize */
-    article,aside,details,figcaption,figure,footer,header,hgroup,main,nav,section,summary{display:block}audio,canvas,video{display:inline-block}audio:not([controls]){display:none;height:0}[hidden]{display:none}html{font-family:sans-serif;-webkit-text-size-adjust:100%;-ms-text-size-adjust:100%}body{margin:0}a:focus{outline:thin dotted}a:active,a:hover{outline:0}h1{font-size:2em;margin:0.67em 0}abbr[title]{border-bottom:1px dotted}b,strong{font-weight:bold}dfn{font-style:italic}hr{-moz-box-sizing:content-box;box-sizing:content-box;height:0}mark{background:#ff0;color:#000}code,kbd,pre,samp{font-family:monospace,serif;font-size:1em}pre{white-space:pre-wrap}q{quotes:"\201C""\201D""\2018""\2019"}small{font-size:80%}sub,sup{font-size:75%;line-height:0;position:relative;vertical-align:baseline}sup{top:-0.5em}sub{bottom:-0.25em}img{border:0}svg:not(:root){overflow:hidden}figure{margin:0}fieldset{border:1px solid #c0c0c0;margin:0 2px;padding:0.35em 0.625em 0.75em}legend{border:0;padding:0}button,input,select,textarea{font-family:inherit;font-size:100%;margin:0}button,input{line-height:normal}button,select{text-transform:none}button,html input[type="button"],input[type="reset"],input[type="submit"]{-webkit-appearance:button;cursor:pointer}button[disabled],html input[disabled]{cursor:default}input[type="checkbox"],input[type="radio"]{box-sizing:border-box;padding:0}input[type="search"]{-webkit-appearance:textfield;-moz-box-sizing:content-box;-webkit-box-sizing:content-box;box-sizing:content-box}input[type="search"]::-webkit-search-cancel-button,input[type="search"]::-webkit-search-decoration{-webkit-appearance:none}button::-moz-focus-inner,input::-moz-focus-inner{border:0;padding:0}textarea{overflow:auto;vertical-align:top}table{border-collapse:collapse;border-spacing:0}
-    
-    /* @group base */
-    a{text-decoration:none}:hover,:focus,a:focus,:active{outline:0}blockquote{font-style:italic;margin:1em 30px}pre,code{font-family:monaco,monospace,courier}code{background:#f9f9f9;border:1px solid #ccc;font-size:80%;padding:.1em .2em}pre code{display:block;display:inline-block;padding:.5em .8em}td,th{border-bottom:1px solid #ccc;padding:.4em 2em;text-align:left}th:first-child,td:first-child{padding-left:0.7em}img{max-width:100%}ul{list-style:outside;padding-left:1.3em}ol{padding-left:1.5em}ul ul{list-style:circle;margin:0;padding-left:2em}p,ul,ol,form,table{margin:0}.hide{display:none}.clear{display:block;clear:both}.cf{zoom:1}.cf:before,.cf:after{content:"";display:table}.cf:after{clear:both}
-    /* @end */
+    /*! crack.css v11.3 | http://crack.plue.me | MIT License */
+    a{text-decoration:none}:hover,:focus,a:focus,:active{outline:0}p,ul,ol,form,table{margin:0}img{max-width:100%;width:auto\9;height:auto;vertical-align:top}h1,h2,h3,h4,h5,h6{font-size:100%;font-weight:normal;margin:.7em 0}blockquote{font-style:italic;margin:1em 30px}fieldset{display:table-column}td,th{border-bottom:1px solid #ccc;padding:.4em 2em;text-align:left}th:first-child,td:first-child{padding-left:.7em}ul{list-style:outside;padding-left:1.3em}ol{padding-left:1.5em}ul ul{list-style:circle;margin:0;padding-left:2em}nav ul,nav ul ul{list-style:none;padding-left:0}pre,code{font-family:monaco,monospace,courier}code{font-size:80%;padding:.1em .2em;background:#f9f9f9;border:1px solid #ccc;-webkit-border-radius:4px;border-radius:4px}pre code{display:inline-block;padding:.5em .8em}.btn,button,textarea,select,input[type="text"],input[type="email"],input[type="password"],input[type="submit"]{color:#555;padding:.55em;padding-bottom:.45em;line-height:normal;border:1px solid #ccc;-webkit-border-radius:4px;border-radius:4px;vertical-align:top}.btn{display:inline-block}textarea:focus,select:focus,input[type="text"]:focus,input[type="email"]:focus,input[type="password"]:focus{border-color:#aaa}input[type="text"],input[type="email"],input[type="password"]{width:225px}select{padding:.36em;width:175px}textarea{width:225px;min-width:225px;max-width:100%;height:70px;min-height:70px;max-height:150px}.btn,button,input[type="submit"]{background:#f9f9f9;padding:.55em .67em .45em .67em;overflow:visible}.btn:hover,button:hover,input[type="submit"]:hover{background:#e9e9e9;color:#333}.btn:active,button:active,input[type="submit"]:active{background:#e3e3e3}.hide{display:none;visibility:hidden}.clear{display:block;clear:both}.cf{zoom:1}.cf:before,.cf:after{content:"";display:table}.cf:after{clear:both}
     
     
-    /* @group global */
+    /*! Global */
     
     html {
-    font-family: Dosis, arial, verdana, sans-serif;
-    font-size: 16px;
-    color: #333;
-    font-weight: 500;
+      font-family: Dosis, arial, verdana, sans-serif;
+      font-size: 16px;
+      font-weight: 500;
     }
     body {
-    line-height: 1.4;
-    padding: 7% 13%;
+      color: #333;
+      line-height: 1.4;
+      padding: 7% 13%;
     }
     
     b {
-    font-weight: 600;
+      font-weight: 600;
     }
     a {
-    color: #144FAE;
+      color: #144FAE;
     }
     a:hover {
-    color: #000;
+      color: #000;
     }
     
     h1, h2, h3, h4 {
-    margin: 0.6em 0;
-    line-height: 1.1;
+      line-height: 1.1;
+      font-weight: 600;
     }
     h1 {
-    font-size: 2.1em;
+      font-size: 2.1em;
     }
     h2 {
-    font-size: 1.7em;
+      font-size: 1.7em;
     }
     
     p, ul, ol, form, table {
-    margin-bottom: 1em;
+      margin-bottom: 1em;
     }
     p.less {
-    margin-bottom: 0.3em;
+      margin-bottom: 0.3em;
     }
     
     /* @end */
@@ -151,15 +143,14 @@
       <div class="multi cf">
         <ul>
           <li>CoaScript</li>
-          <li>Solid HTML5 and CSS</li>
           <li>Hierachical, Breadcrumb and List Menus</li>
           <li>Smooth Page Translation</li>
+          <li>Additional Page Content</li> 
           <li>E-Mail Protection</li>
         </ul>
         <ul>
           <li>Tags and Variables</li>
           <li>HTML Cache</li>
-          <li>Additional Page Content</li> 
           <li>Fullscreen Theme Edit</li>
           <li>Optional Admin Style</li>
         </ul>
@@ -510,8 +501,8 @@
       </code>
       
       <h3>Settings</h3>
-      <p>You may hide the "Translate Page" button via "Coa Settings" (Plugins page).</p> 
-      <p>With the constant <code>TRANSLATIONURL</code> in "template.php" you can set the translated language name for the language parameter or pretty url path segment.</p>
+      <p>You may hide the "Translate Page" button via "Coa Settings" (Settings page).</p> 
+      <p>With the constant <code>TRANSLATIONURL</code> in "CoaTheme/config.inc.php" you can set the translated language name for the language parameter or pretty url path segment.</p>
   
       <p class="less">Set the &lt;html&gt; tag language codes:</p>
       
@@ -532,7 +523,7 @@
         RewriteRule ^([A-Za-z0-9_-]+)/([A-Za-z0-9_-]+)/([A-Za-z0-9-]+).html index.php?id=$3&amp;L=$1 [QSA,L]
       </code>
       
-      <p>If your website is in a subdirectory you need to set the constant <code>SUBDIRPATH</code> in "template.php" and update the <code>RewriteBase</code> in your ".htaccess" file as well.</p>
+      <p>If your website is in a subdirectory you need to set the constant <code>SUBDIRPATH</code> in "CoaTheme/config.inc.php" and update the <code>RewriteBase</code> in your ".htaccess" file as well.</p>
     
     </article>
   
