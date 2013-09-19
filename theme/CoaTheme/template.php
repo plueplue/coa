@@ -2,7 +2,7 @@
 /*
 @File: template.php
 @Package: GetSimple
-@Action: Coa 1.10 Beta
+@Action: Coa 1.10 for GetSimple
 */
 
 /*
