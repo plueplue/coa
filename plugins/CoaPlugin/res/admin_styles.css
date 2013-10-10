@@ -14,7 +14,8 @@ color: #C00 !important;
 #sidebar .snav li a.current, #sidebar .snav li a.current:hover,
 .edit-nav a:hover, #sidebar .edit-nav a:hover, .edit-nav a.current,
 body .uploadifyError .uploadifyProgressBar,
-a.cancel:hover, body .delete a:hover {
+a.cancel:hover, body .delete a:hover,
+body .act_content a {
 background-color: #C00 !important;
 }
 
