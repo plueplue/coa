@@ -8,7 +8,7 @@ Arrange Menu Links for Page Translation
 /* Lang Rewrite
  * since 1.5 */
 
-if (isset($_GET['L']) == TRANSLATIONURL) $TRANS = 1;
+if (isset($_GET['L']) && $_GET['L'] == TRANSLATIONURL) $TRANS = 1;
 if (substr($PERMALINK, -11) == '%slug%.html') $fancyEnd = 1;
 else $fancyEnd = 0;
 

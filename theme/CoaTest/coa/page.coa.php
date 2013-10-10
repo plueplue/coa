@@ -1,6 +1,14 @@
 ## Test Page Template
 
 
+## Main Nav and Content
+
+menu
+  act = <li class="act"> | </li>
+  
+content
+
+
 ## Conditions
 
 place
