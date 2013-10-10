@@ -26,7 +26,7 @@ function makeConstant($configOA) {
     $OA = getAttributes($OA,$curPid);
 
     // make constant objects
-    if ($OA['allTrue'] == 1) {
+    if (isset($OA['allTrue']) && $OA['allTrue'] == 1) {
       if ($OA['type'] == 'main') mainObj($OA,$configOA);
       if ($OA['type'] == 'meta') metaObj($OA);
       if ($OA['type'] == 'css') cssObj($OA);
