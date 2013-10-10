@@ -100,7 +100,7 @@ function placeObj($OA) {
 
     // check file type and go
     if(is_file(THEMEPATH.$OA['file']) && $ptf = THEMEPATH.$OA['file']) {
-      if ($last4 == '.coa' || $last8 == '.coa.php') makePage($ptf, $configOA, $isPlace = 1);
+      if ($last4 == '.coa' || $last8 == '.coa.php' || $last8 == '.coa.txt') makePage($ptf, $configOA, $isPlace = 1);
       elseif ($last4 == '.php') include_once($ptf);
       elseif ($last4 == '.htm' || $last5 == '.html') echo file_get_contents($ptf);
       elseif ($last4 == '.txt') echo htmlentities( file_get_contents($ptf) );

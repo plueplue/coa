@@ -18,7 +18,7 @@ http://coa.plue.me
 */
 
 # Define a non-standard page template
-//$pagetemplate = 'page-contact.coa.php';
+//$pagetemplate = 'page-contact.coa.txt';
 
 # Include Coa
 include 'theme/'.$TEMPLATE.'/config.inc.php';

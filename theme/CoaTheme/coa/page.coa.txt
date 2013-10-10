@@ -11,7 +11,7 @@ content
   get = sidebar
   wrap = <aside> | </aside>
 
-place
-  file = coa/footer.coa.php
+#place
+  file = coa/footer.coa.txt
 
 ## End

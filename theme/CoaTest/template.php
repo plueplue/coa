@@ -21,10 +21,10 @@ http://coa.plue.me
 define('THEMEPATH', 'theme/'.$TEMPLATE.'/');
 
 # Page Template Path
-define('PAGETEMPLATE', THEMEPATH.'coa/page.coa.php');
+define('PAGETEMPLATE', THEMEPATH.'coa/page.coa.txt');
 
 # Constant Template Path
-define('CONSTANTTEMPLATE', THEMEPATH.'coa/constant.coa.php');
+define('CONSTANTTEMPLATE', THEMEPATH.'coa/constant.coa.txt');
 
 # Translation Name for URL
 define('TRANSLATIONURL', 'de');

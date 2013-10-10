@@ -5,7 +5,7 @@ Basic Configuration
 */
 
 # Default Page Template
-if( !isset($pagetemplate) ) $pagetemplate = 'page.coa.php';
+if( !isset($pagetemplate) ) $pagetemplate = 'page.coa.txt';
 
 # Theme Path
 define('THEMEPATH', 'theme/'.$TEMPLATE.'/');
@@ -14,7 +14,7 @@ define('THEMEPATH', 'theme/'.$TEMPLATE.'/');
 define('PAGETEMPLATE', THEMEPATH.'coa/'.$pagetemplate);
 
 # Constant Template Path
-define('CONSTANTTEMPLATE', THEMEPATH.'coa/constant.coa.php');
+define('CONSTANTTEMPLATE', THEMEPATH.'coa/constant.coa.txt');
 
 # Translation Name for URL
 define('TRANSLATIONURL', 'de');
