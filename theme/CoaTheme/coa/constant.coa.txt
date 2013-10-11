@@ -2,10 +2,10 @@
 
 config
   bodyTag = basic
-  #cache = 1
 
 main
   title = $siteName: $title
+  #language = de
   
 meta
   viewport = width=device-width,initial-scale=1.0
