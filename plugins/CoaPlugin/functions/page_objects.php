@@ -187,16 +187,16 @@ function getPageData($elem,$getThis='curPid') {
   // load file
   $file = @file_get_contents('data/pages/'.$fileName.'.xml');
   $data = simplexml_load_string($file);
-   
+
   // get data
   if($elem == 'content') return stripslashes(htmlspecialchars_decode($data->translationContent,ENT_QUOTES));
   elseif(isset($data->translationTitle) && $elem == 'title') return strip_decode($data->translationTitle,ENT_QUOTES);
   elseif(isset($data->translationMenu) && $elem == 'menu') return strip_quotes($data->translationMenu,ENT_QUOTES);
-  elseif($elem == 'add-content-1') return stripslashes(htmlspecialchars_decode($data->addContent1,ENT_QUOTES));
-  elseif($elem == 'add-content-2') return stripslashes(htmlspecialchars_decode($data->addContent2,ENT_QUOTES));
-  elseif($elem == 'add-content-3') return stripslashes(htmlspecialchars_decode($data->addContent3,ENT_QUOTES));
-  elseif($elem == 'add-content-translation-1') return stripslashes(htmlspecialchars_decode($data->addContent1L,ENT_QUOTES));
-  elseif($elem == 'add-content-translation-2') return stripslashes(htmlspecialchars_decode($data->addContent2L,ENT_QUOTES));
-  elseif($elem == 'add-content-translation-3') return stripslashes(htmlspecialchars_decode($data->addContent3L,ENT_QUOTES));
+  elseif(isset($data->addContent1) && $elem == 'add-content-1') return stripslashes(htmlspecialchars_decode($data->addContent1,ENT_QUOTES));
+  elseif(isset($data->addContent2) && $elem == 'add-content-2') return stripslashes(htmlspecialchars_decode($data->addContent2,ENT_QUOTES));
+  elseif(isset($data->addContent3) && $elem == 'add-content-3') return stripslashes(htmlspecialchars_decode($data->addContent3,ENT_QUOTES));
+  elseif(isset($data->addContent1L) && $elem == 'add-content-translation-1') return stripslashes(htmlspecialchars_decode($data->addContent1L,ENT_QUOTES));
+  elseif(isset($data->addContent2L) && $elem == 'add-content-translation-2') return stripslashes(htmlspecialchars_decode($data->addContent2L,ENT_QUOTES));
+  elseif(isset($data->addContent3L) && $elem == 'add-content-translation-3') return stripslashes(htmlspecialchars_decode($data->addContent3L,ENT_QUOTES));
 }
 ?>
