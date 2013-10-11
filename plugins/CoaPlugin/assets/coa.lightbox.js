@@ -13,7 +13,7 @@ jQuery(function($) {
 
 // vars
 var fade_lb = 460;
-var css_url = 'plugins/CoaPlugin/res/coa_lightbox.css';
+var css_url = 'plugins/CoaPlugin/assets/coa_lightbox.css';
 
 // include css
 if (document.createStyleSheet) { document.createStyleSheet(css_url); }

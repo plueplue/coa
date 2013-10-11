@@ -455,14 +455,14 @@ function get_content_editor($num) {
 ////////////////////////
 
 function backend_js() {
-  echo '<script type="text/javascript" src="../plugins/CoaPlugin/res/coa.backend.js"></script>';
+  echo '<script type="text/javascript" src="../plugins/CoaPlugin/assets/coa.backend.js"></script>';
 }
 
 function backend_css() {
-  echo '<link rel="stylesheet" href="../plugins/CoaPlugin/res/coa_backend.css"></link>';
+  echo '<link rel="stylesheet" href="../plugins/CoaPlugin/assets/coa_backend.css"></link>';
 }
 
 function be_styles() {
-  echo '<link rel="stylesheet" href="../plugins/CoaPlugin/res/admin_styles.css"></link>';
+  echo '<link rel="stylesheet" href="../plugins/CoaPlugin/assets/admin_styles.css"></link>';
 }
 ?>

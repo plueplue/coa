@@ -22,7 +22,7 @@ CoaScript is easy to learn and relaxing to use. Here is a simple example:
 
 ```html
 menu
-  act = <li class="act"> | </li>
+  act = <li class="active"> | </li>
 
 content
   wrap = <article><h1>$title</h1> | </article>
