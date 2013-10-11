@@ -27,34 +27,46 @@ function makeMenu($currentpage,$OA) {
   // for each matching page
   foreach ($pagesSorted as $page) {
   
-    // show hidden pages only as list menu
+    // show hidden pages only as list menu or parent menu
     if ($page['menuStatus'] == 'Y' || isset($OA['listA']) && in_array($page['url'], $OA['listA'])) {
       if (isset($OA['listA']) && in_array($page['url'], $OA['listA']) || !isset($OA['list'])) {
-        if (!$page['parent'] || isset($OA['listA'])) {
-
-          // fallback menu title
-          if (!isset($page['menu']) || !$page['menu']) $page['menu'] = $page['title'];
+        if (!$page['parent'] || isset($OA['listA']) || isset($OA['parent'])) {
           
-          // translations
-          $menu_ = menuTranslation($page,'menu');
-          $title_ = menuTranslation($page,'title');
-          
-          // find url
-          $findUrl = getUrl($page['url'],$page['parent']);
-          
-          // get language param and base
-          $langParam = getLangParam($PERMALINK,$findUrl);
-          if(!$TRANS) $langBase = '';
-
-          // make <li> tags and go for sub
-          $result .= liTag($currentpage,$page,$OA,0).'<a class="'.$page['url'].'" href="'.$langBase.$findUrl.$langParam.'"';
-          if (isset($OA['title']) && $OA['title'] == 1) $result.= ' title="'.strip_quotes($title_).'"';
-          $result .= '>'.$menu_.'</a>';
-          
-          $makeSub = makeSub($page['url'],$currentpage,$OA);
-          if ($makeSub) $result .= '<ul>'.$makeSub.'</ul>';
-          
-          $result .= liTag($currentpage,$page,$OA,1); 
+          // check if is parent menu
+          if( isset($OA['parent']) && $page['parent'] === $OA['parent'] || ! isset($OA['parent']) ) {
+        
+            // fallback menu title
+            if (!isset($page['menu']) || !$page['menu']) $page['menu'] = $page['title'];
+            
+            // translations
+            $menu_ = menuTranslation($page,'menu');
+            $title_ = menuTranslation($page,'title');
+            
+            // find url
+            $findUrl = getUrl($page['url'],$page['parent']);
+            
+            // get language param and base
+            $langParam = getLangParam($PERMALINK,$findUrl);
+            if(!$TRANS) $langBase = '';
+  
+            // make <li> tags and go for sub
+            $result .= liTag($currentpage,$page,$OA,0).'<a class="'.$page['url'].'" href="'.$langBase.$findUrl.$langParam.'"';
+            if (isset($OA['title']) && $OA['title'] == 1) $result.= ' title="'.strip_quotes($title_).'"';
+            $result .= '>'.$menu_.'</a>';
+            
+            $makeSub = makeSub($page['url'],$currentpage,$OA);
+            if ($makeSub) $result .= '<ul>'.$makeSub.'</ul>';
+            
+            // show content if is parent menu
+            if( isset($OA['parent']) && $page['parent'] === $OA['parent'] ) {
+              $menuContent = getContentOfPage($page['url']);
+              if( ! empty($menuContent) ) {
+                $result .=  '<p class="date">'.shtDate($page['pubDate']).'</p>'.$menuContent;
+              }
+            }
+            
+            $result .= liTag($currentpage,$page,$OA,1);
+          }
         }
       }
     }
