@@ -145,12 +145,11 @@
           <li>CoaScript</li>
           <li>Hierachical, Breadcrumb and List Menus</li>
           <li>Smooth Page Translation</li>
-          <li>Additional Page Content</li> 
           <li>E-Mail Protection</li>
         </ul>
         <ul>
+          <li>Additional Page Content</li>
           <li>Tags and Variables</li>
-          <li>HTML Cache</li>
           <li>Fullscreen Theme Edit</li>
           <li>Optional Admin Style</li>
         </ul>
@@ -258,9 +257,8 @@
         <span>js1 = js/functions.js</span>
       </code>
       
-      <p class="less">Activate HTML cache and protect email links and strings:</p>
+      <p class="less">Protect email links and strings:</p>
       <code class="block">config
-        <span>cache = 1</span>
         <span>protMail = 2</span>
       </code>
       
@@ -322,7 +320,6 @@
         config
         <span>loginReq = <em>if set to 1, login is required to see the website</em></span>
         <span>minify = <em>if set to 1, source code is compressed</em></span>
-        <span>cache = <em>if set to 1, cache is enabled (disabled if logged in)</em></span>
         <span>htmlTag = <em>enter custom string, e.g. &lt;html id="foo"&gt;</em></span>
         <span>bodyTag = <em>use "basic" or "extended" for IE and no_js classes or enter custom string</em></span>
         <span>extFiles = <em>set to "none" to exclude external files (e.g. lightbox CSS)</em></span>
@@ -536,6 +533,7 @@
       <ul>
         <li>Bugfix in current language detection</li>
         <li>Changed default file extension to .coa.txt</li>
+        <li>Removed deprecated cache from manual</li>
       </ul>
       
       <b>Version 1.10</b>
