@@ -1,4 +1,0 @@
-<b>i am test.txt</b>
-<p>page title: $title<br>
-page modified: $date</p>
-<b>test.txt end</b>
