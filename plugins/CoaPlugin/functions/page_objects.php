@@ -189,7 +189,7 @@ function getPageData($elem,$getThis='curPid') {
   $data = simplexml_load_string($file);
 
   // get data
-  if($elem == 'content') return stripslashes(htmlspecialchars_decode($data->translationContent,ENT_QUOTES));
+  if(isset($data->translationContent) && $elem == 'content') return stripslashes(htmlspecialchars_decode($data->translationContent,ENT_QUOTES));
   elseif(isset($data->translationTitle) && $elem == 'title') return strip_decode($data->translationTitle,ENT_QUOTES);
   elseif(isset($data->translationMenu) && $elem == 'menu') return strip_quotes($data->translationMenu,ENT_QUOTES);
   elseif(isset($data->addContent1) && $elem == 'add-content-1') return stripslashes(htmlspecialchars_decode($data->addContent1,ENT_QUOTES));
