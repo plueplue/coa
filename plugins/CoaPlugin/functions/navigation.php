@@ -8,19 +8,14 @@ Arrange Menu Links for Page Translation
 /* Lang Rewrite
  * since 1.5 */
 
-if (isset($_GET['L']) && $_GET['L'] == TRANSLATIONURL) $TRANS = 1;
-if (substr($PERMALINK, -11) == '%slug%.html') $fancyEnd = 1;
-else $fancyEnd = 0;
-
-if ($fancyEnd && $TRANS) $langBase = TRANSLATIONURL;
-else $langBase = '';
+if (isset($_GET[TRANSLATIONURL])) $TRANS = 1;
 
 
 /* Make Hierachical Menu 
  * since 1.0 */
 
 function makeMenu($currentpage,$OA) {
-  global $PERMALINK, $pagesArray, $langBase, $TRANS;
+  global $PERMALINK, $pagesArray, $TRANS;
   $pagesSorted = subval_sort($pagesArray,'menuOrder');
   $result = '';
 
@@ -47,10 +42,9 @@ function makeMenu($currentpage,$OA) {
             
             // get language param and base
             $langParam = getLangParam($PERMALINK,$findUrl);
-            if(!$TRANS) $langBase = '';
   
             // make <li> tags and go for sub
-            $result .= liTag($currentpage,$page,$OA,0).'<a class="'.$page['url'].'" href="'.$langBase.$findUrl.$langParam.'"';
+            $result .= liTag($currentpage,$page,$OA,0).'<a class="'.$page['url'].'" href="'.$findUrl.$langParam.'"';
             if (isset($OA['title']) && $OA['title'] == 1) $result.= ' title="'.strip_quotes($title_).'"';
             $result .= '>'.$menu_.'</a>';
             
@@ -79,7 +73,7 @@ function makeMenu($currentpage,$OA) {
  * since 1.0 */
 
 function makeSub($url,$currentpage,$OA) {
-  global $PERMALINK, $pagesArray, $langBase, $TRANS;
+  global $PERMALINK, $pagesArray, $TRANS;
   $pagesSorted = subval_sort($pagesArray,'menuOrder');
   $result = '';
   
@@ -102,10 +96,9 @@ function makeSub($url,$currentpage,$OA) {
         
         // get language param and base
         $langParam = getLangParam($PERMALINK,$findUrl);
-        if(!$TRANS) $langBase = '';
         
         // make <li> tags and go for sub
-        $result .= liTag($currentpage,$page,$OA,0).'<a class="'.$page['url'].'" href="'.$langBase.$findUrl.$langParam.'"';
+        $result .= liTag($currentpage,$page,$OA,0).'<a class="'.$page['url'].'" href="'.$findUrl.$langParam.'"';
         if (isset($OA['title']) && $OA['title'] == 1) $result.= ' title="'.strip_quotes($title_).'"';
         $result .= '>'.$menu_.'</a>';
           
@@ -175,7 +168,7 @@ function hasActChild($this,$currentpage) {
  * since 1.0 */
 
 function makeBreadcrumb($currentpage,$initial,$OA) {
-  global $PERMALINK, $pagesArray, $langBase, $TRANS;
+  global $PERMALINK, $pagesArray, $TRANS;
   $pagesSorted = subval_sort($pagesArray,'menuOrder');
 
   // for each page
@@ -202,11 +195,10 @@ function makeBreadcrumb($currentpage,$initial,$OA) {
         
         // get language param and base
         $langParam = getLangParam($PERMALINK,$findUrl);
-        if(!$TRANS) $langBase = '';
 
         // a tag with href
-        if ($initial == 1) $breadcrumb[$i] = $OA['curB'].'<a class="'.$page['url'].'" href="'.$langBase.$findUrl.$langParam;
-        elseif ($initial == 0) $breadcrumb[$i] = $OA['itemB'].'<a class="'.$page['url'].'" href="'.$langBase.$findUrl.$langParam;
+        if ($initial == 1) $breadcrumb[$i] = $OA['curB'].'<a class="'.$page['url'].'" href="'.$findUrl.$langParam;
+        elseif ($initial == 0) $breadcrumb[$i] = $OA['itemB'].'<a class="'.$page['url'].'" href="'.$findUrl.$langParam;
           
         // if title is 'none'
         if (isset($OA['title']) && $OA['title'] == 1) $breadcrumb[$i].=  '" title="'. strip_quotes($title_);            
@@ -228,7 +220,7 @@ function makeBreadcrumb($currentpage,$initial,$OA) {
  * since 1.5 */
 
 function makeLangNav($currentpage,$OA) {
-  global $configOA, $parent, $PERMALINK, $TRANS, $fancyEnd, $langBase;
+  global $configOA, $parent, $PERMALINK, $TRANS;
   
   if(!isset($OA['curB'])) $OA['curB'] = '';
   if(!isset($OA['curA'])) $OA['curA'] = '';
@@ -244,10 +236,7 @@ function makeLangNav($currentpage,$OA) {
   if (strstr(find_url($currentpage,$parent), '?')) $sep = '&';
   else $sep = '?';
   
-  $langParam = $sep.'L='.TRANSLATIONURL;
-  
-  // check permalink
-  if ($fancyEnd) { $langBase = TRANSLATIONURL; $langParam = ''; }
+  $langParam = $sep.TRANSLATIONURL;
   
   // find url
   $findUrl = find_url($currentpage,$parent,'relative');
@@ -268,15 +257,6 @@ function makeLangNav($currentpage,$OA) {
   // echo <li> tag for default language
   echo $liB.'<a href="'.$findUrl.'">'.$langTitlesA[0].'</a>'.$liA;
 
-  // adjust translated path
-  if($fancyEnd && SUBDIRPATH != '/' && SUBDIRPATH != '') $findUrl = '/'.$findUrl;
-
-  // adjust translated url
-  if($currentpage == 'index') {
-    if($fancyEnd == 1) $findUrl = '/index.html';
-    if($fancyEnd == 2) $findUrl = '/index/';
-  }
-
   // get translated lang item wrap
   $liB = ''; $liA = '';
   if($TRANS) { $liB = $OA['curB']; $liA = $OA['curA']; }
@@ -285,7 +265,7 @@ function makeLangNav($currentpage,$OA) {
   if(!$liB) { $liB = '<li>'; $liA = '</li>'; }
   
   // echo <li> tag for translation
-  echo $liB.'<a href="'.$langBase.$findUrl.$langParam.'">'.$langTitlesA[1].'</a>'.$liA;
+  echo $liB.'<a href="'.$findUrl.$langParam.'">'.$langTitlesA[1].'</a>'.$liA;
 }
 
 
@@ -293,22 +273,15 @@ function makeLangNav($currentpage,$OA) {
  * since 1.5 */
 
 function getLangParam($PERMALINK,$findUrl) {
-  global $TRANS, $fancyEnd;
+  global $TRANS;
+
+  if (strstr($findUrl, '?')) $sep = '&';
+  else $sep = '?';
+          
+  if($TRANS) $langParam = $sep.TRANSLATIONURL;
+  else $langParam = '';
     
-  // reset for fancy urls
-  if ($fancyEnd) {
-    $langParam = '';
-      
-  // get separator and return param
-  } else {
-    if (strstr($findUrl, '?')) $sep = '&';
-    else $sep = '?';
-            
-    if($TRANS) $langParam = $sep.'L='.TRANSLATIONURL;
-    else $langParam = '';
-      
-    return $langParam;
-  }
+  return $langParam;
 }
 
 
@@ -342,7 +315,7 @@ function menuTranslation($page,$elem) {
  * since 1.5 */
           
 function getUrl($url,$parent) {
-  global $fancyEnd, $TRANS;
+  global $TRANS;
   
   // find url
   $findUrl = find_url($url,$parent,'relative');
@@ -351,14 +324,7 @@ function getUrl($url,$parent) {
   if(SUBDIRPATH != '/' && SUBDIRPATH != '') {
     $urlContainsSubdir = substr($findUrl, 0, strlen(SUBDIRPATH));
     if(SUBDIRPATH == $urlContainsSubdir) $findUrl = substr($findUrl, strlen(SUBDIRPATH));
-    if($TRANS && $fancyEnd) $findUrl = '/'.$findUrl;
   }
-  
-  // findurl for translated index
-  if($url == 'index' && $TRANS) {
-    if($fancyEnd == 1) $findUrl = '/index.html';
-    if($fancyEnd == 2) $findUrl = '/index/';
-  } 
 
   return $findUrl;
 }
