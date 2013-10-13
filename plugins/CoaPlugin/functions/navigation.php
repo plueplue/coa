@@ -22,13 +22,13 @@ function makeMenu($currentpage,$OA) {
   // for each matching page
   foreach ($pagesSorted as $page) {
   
-    // show hidden pages only as list menu or parent menu
+    // show hidden pages only as list menu or tree menu
     if ($page['menuStatus'] == 'Y' || isset($OA['listA']) && in_array($page['url'], $OA['listA'])) {
       if (isset($OA['listA']) && in_array($page['url'], $OA['listA']) || !isset($OA['list'])) {
-        if (!$page['parent'] || isset($OA['listA']) || isset($OA['parent'])) {
+        if (!$page['parent'] || isset($OA['listA']) || isset($OA['tree'])) {
           
-          // check if is parent menu
-          if( isset($OA['parent']) && $page['parent'] === $OA['parent'] || ! isset($OA['parent']) ) {
+          // check if is tree menu
+          if( isset($OA['tree']) && $page['parent'] === $OA['tree'] || ! isset($OA['tree']) ) {
         
             // fallback menu title
             if (!isset($page['menu']) || !$page['menu']) $page['menu'] = $page['title'];
@@ -51,13 +51,8 @@ function makeMenu($currentpage,$OA) {
             $makeSub = makeSub($page['url'],$currentpage,$OA);
             if ($makeSub) $result .= '<ul>'.$makeSub.'</ul>';
             
-            // show content if is parent menu
-            if( isset($OA['parent']) && $page['parent'] === $OA['parent'] ) {
-              $menuContent = getContentOfPage($page['url']);
-              if( ! empty($menuContent) ) {
-                $result .=  '<p class="date">'.shtDate($page['pubDate']).'</p>'.$menuContent;
-              }
-            }
+            // show content if is extended
+            $result .= extMenu($OA,$page);
             
             $result .= liTag($currentpage,$page,$OA,1);
           }
@@ -104,7 +99,10 @@ function makeSub($url,$currentpage,$OA) {
           
         $makeSub = makeSub($page['url'],$currentpage,$OA);
         if ($makeSub) $result .= '<ul>'.$makeSub.'</ul>';
-          
+            
+        // show content if is extended
+        $result .= extMenu($OA,$page);
+            
         $result .= liTag($currentpage,$page,$OA,1);
       }
     }
@@ -327,5 +325,40 @@ function getUrl($url,$parent) {
   }
 
   return $findUrl;
+}
+
+
+/* Extended Menu
+ * since 1.11 */
+          
+function extMenu($OA,$page) {
+  $return = '';
+  
+  // show content if is extended
+  if( isset($OA['extended']) ) {
+  
+    // default
+    if( $OA['extended'] == 'true' ) {
+      $menuContent = getContentOfPage($page['url']);
+      if( ! empty($menuContent) ) {
+        $return = '<p class="date">'.shtDate($page['pubDate']).'</p>'.$menuContent;
+      }
+    }
+    
+    // with crop
+    elseif( $OA['extended'] > 0 ) {
+      $menuContent = getContentOfPage($page['url']);
+      if( ! empty($menuContent) ) {
+        $clean = strip_tags($menuContent);
+        $excerpt = substr( $clean, 0, $OA['extended'] );
+
+        if( strlen($clean) > strlen($excerpt) ) $excerpt .= '...';
+        
+        $return = '<p class="date">'.shtDate($page['pubDate']).'</p><p class="excerpt">'. $excerpt .'</p>';
+      }
+    }
+  
+  }
+  return $return;
 }
 ?>
