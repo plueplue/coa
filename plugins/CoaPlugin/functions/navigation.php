@@ -212,7 +212,7 @@ function makeBreadcrumb($currentpage,$initial,$OA) {
       }
     }
   }
-  print_r($breadcrumb[$i]);
+  if(isset($breadcrumb)) print_r($breadcrumb[$i]);
 }
 
 
