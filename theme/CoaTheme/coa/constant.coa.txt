@@ -2,6 +2,7 @@
 
 config
   bodyTag = basic
+  protMail = 2
 
 main
   title = $siteName: $title

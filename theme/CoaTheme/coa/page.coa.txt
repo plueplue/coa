@@ -5,7 +5,7 @@ menu
   act = <li class="active"> | </li>
 
 content
-  wrap = <article><h2>$title</h2> | </article>
+  wrap = <main><h2>$title</h2> | </main>
 
 content
   get = sidebar
