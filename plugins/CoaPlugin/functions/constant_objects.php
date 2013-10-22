@@ -9,7 +9,7 @@ Echo HTML Header
  * since 1.0 */
 
 function configObj($path) {
-  global $curPid, $USR;
+  global $curPid, $USR, $GSADMIN;
   
   $OA = array();
   $configOA = array();
@@ -26,10 +26,13 @@ function configObj($path) {
     $OA = getAttributes($OA,$curPid);
 
     // make config object array
-    if ($OA['allTrue'] == 1 && $OA['type'] == 'config') {
+    if (isset($OA['allTrue']) && $OA['allTrue'] == 1 && $OA['type'] == 'config') {
         
         // require Login
-        if (isset($OA['loginReq']) && $OA['loginReq'] == 1 && !$USR) header('location:'.get_site_url(false).'admin/index.php?redirect='.$_SERVER['REQUEST_URI']);
+        if (isset($OA['loginReq']) && $OA['loginReq'] == 1 && !$USR) {
+          header('location:'.get_site_url(false).$GSADMIN.'/index.php?redirect='.$_SERVER['REQUEST_URI']);
+          exit;
+        }
         
         // all attributes to config array
         $configOA = $OA;
@@ -121,10 +124,8 @@ function makeCSS($value,$mediaTag,$OA) {
   if (substr($value,0,4) == 'http') $pathT = '';
   else $pathT = THEMEPATH;
   
-  if(!isset($OA['wrap'])) {
-    $OA['wrapB'] = '';
-    $OA['wrapA'] = '';
-  }
+  if(!isset($OA['wrapB'])) $OA['wrapB'] = '';
+  if(!isset($OA['wrapA'])) $OA['wrapA'] = '';
       
   echo $OA['wrapB']. '<link rel="stylesheet" href="'. $pathT . $value .'"'. $mediaTag .'>'.$OA['wrapA']."\n";
 }
@@ -153,11 +154,9 @@ function scriptObj($OA) {
     if (isset($OA['js'][$k])) {
       if (substr($OA['js'][$k],0,4) == 'http') $pathT = '';
       else $pathT = THEMEPATH;
-      
-      if(!isset($OA['wrap'])) {
-        $OA['wrapB'] = '';
-        $OA['wrapA'] = '';
-      }
+
+      if(!isset($OA['wrapB'])) $OA['wrapB'] = '';
+      if(!isset($OA['wrapA'])) $OA['wrapA'] = '';
       
       echo $OA['wrapB']. '<script src="' . $pathT . $OA['js'][$k] .'"></script>'.$OA['wrapA']."\n";
     }

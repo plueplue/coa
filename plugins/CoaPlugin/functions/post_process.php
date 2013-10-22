@@ -84,7 +84,7 @@ function makeTag($buffer, $tag, $what) {
   // include lightbox javascript
   if(!isset($configOA['extFiles'])) $configOA['extFiles'] = '';
   if($what == 'lightbox:' && $configOA['extFiles'] != 'none') {
-      $js_and_body = '<script src="plugins/CoaPlugin/res/coa.lightbox.min.js"></script>'."\n".'</body>';
+      $js_and_body = '<script src="plugins/CoaPlugin/assets/coa.lightbox.min.js"></script>'."\n".'</body>';
       $buffer = preg_replace('[</body>]', $js_and_body, $result);
   } else {
       $buffer = $result;

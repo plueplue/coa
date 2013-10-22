@@ -123,7 +123,7 @@
       <p>Coa is a powerful framework to create lean and functional templates.<br>
         It provides CoaScript and some useful out of the box features for fast and flexible development.</p>
       <p>Coa is available for <a href="http://get-simple.info/" target="_blank">GetSimple</a>, the simplest Content Management System ever.<br>
-        The latest version is Coa 1.10.</p>
+        The latest version is Coa 1.11.</p>
   
       <p>
         <a class="link" href="http://get-simple.info/extend/plugin/coa/375/" target="_blank">Download</a> | 
@@ -143,14 +143,13 @@
       <div class="multi cf">
         <ul>
           <li>CoaScript</li>
-          <li>Hierachical, Breadcrumb and List Menus</li>
+          <li>Hierachical, Breadcrumb and extended Menus</li>
           <li>Smooth Page Translation</li>
-          <li>Additional Page Content</li> 
           <li>E-Mail Protection</li>
         </ul>
         <ul>
+          <li>Additional Page Content</li>
           <li>Tags and Variables</li>
-          <li>HTML Cache</li>
           <li>Fullscreen Theme Edit</li>
           <li>Optional Admin Style</li>
         </ul>
@@ -192,7 +191,7 @@
       
       <h1>1. CoaScript</h1>
       
-      <p>A website developed with Coa needs at least two templates: <code>constant.coa.php</code> and <code>page.coa.php</code>.
+      <p>A website developed with Coa needs at least two templates: <code>constant.coa.txt</code> and <code>page.coa.txt</code>.
         The constant template contains the website header and a bit of configuration, the page template contains the website body.</p>
       
       <p>Create objects like <code>menu</code>, <code>css</code>, <code>content</code> or <code>image</code> to build your template. 
@@ -258,9 +257,8 @@
         <span>js1 = js/functions.js</span>
       </code>
       
-      <p class="less">Activate HTML cache and protect email links and strings:</p>
+      <p class="less">Protect email links and strings:</p>
       <code class="block">config
-        <span>cache = 1</span>
         <span>protMail = 2</span>
       </code>
       
@@ -322,7 +320,6 @@
         config
         <span>loginReq = <em>if set to 1, login is required to see the website</em></span>
         <span>minify = <em>if set to 1, source code is compressed</em></span>
-        <span>cache = <em>if set to 1, cache is enabled (disabled if logged in)</em></span>
         <span>htmlTag = <em>enter custom string, e.g. &lt;html id="foo"&gt;</em></span>
         <span>bodyTag = <em>use "basic" or "extended" for IE and no_js classes or enter custom string</em></span>
         <span>extFiles = <em>set to "none" to exclude external files (e.g. lightbox CSS)</em></span>
@@ -401,6 +398,8 @@
           <span>mode = <em>use "breadcrumb" or "default" (native GetSimple menu)</em></span>
           <span>list = <em>comma separated page ids, if set only these pages are shown </em></span>
           <span>language = <em>comma separated menu texts for language menu (active if set) </em></span>
+          <span>tree = <em>creates a menu from subpages of given page id</em></span>
+          <span>extended = <em>adds content and date if set "true", crop content with setting a number</em></span>
           <span>title = <em>use 1 to show the title attribute of the &lt;a&gt; tags</em></span>
           <span>wrap = <em>wraps the whole menu, default is &lt;ul&gt; | &lt;/ul&gt;</em></span>
           <span>item = <em>wraps each menu item, default is &lt;li&gt; | &lt;/li&gt;</em></span>
@@ -500,29 +499,18 @@
           <span>act = &lt;li class="act"&gt; | &lt;/li&gt;</span>
       </code>
       
-      <h3>Settings</h3>
-      <p>You may hide the "Translate Page" button via "Coa Settings" (Settings page).</p> 
-      <p>With the constant <code>TRANSLATIONURL</code> in "CoaTheme/config.inc.php" you can set the translated language name for the language parameter or pretty url path segment.</p>
-  
       <p class="less">Set the &lt;html&gt; tag language codes:</p>
-      
       <code class="block">
         main
           <span>language = en, de</span>
-      </code> 
-      
-      <h3>Pretty Urls</h3>
-      
-      <p>To rewrite translated urls with a virtual path segment, 
-        you need to set a custom permalink structure like <code>%slug%.html</code> or <code>%parent%/%slug%.html</code> and your ".htaccess" file needs to be updated. </p>
-        
-      <p class="less">Replace the default RewriteRule with:</p>
-      <code class="block">
-        RewriteRule ^([A-Za-z0-9_-]+).html index.php?id=$1 [QSA,L]<br>
-        RewriteRule ^([A-Za-z0-9_-]+)/([A-Za-z0-9_-]+).html index.php?id=$2&amp;L=$1 [QSA,L]<br>
-        RewriteRule ^([A-Za-z0-9_-]+)/([A-Za-z0-9_-]+)/([A-Za-z0-9-]+).html index.php?id=$3&amp;L=$1 [QSA,L]
       </code>
       
+      <h3>Settings</h3>
+      <p>You may hide the "Translate Page" button via "Coa Settings" (Settings page).</p> 
+      <p>With the constant <code>TRANSLATIONURL</code> in "CoaTheme/config.inc.php" you can set the translated language name for the language parameter.</p>
+  
+     
+            
       <p>If your website is in a subdirectory you need to set the constant <code>SUBDIRPATH</code> in "CoaTheme/config.inc.php" and update the <code>RewriteBase</code> in your ".htaccess" file as well.</p>
     
     </article>
@@ -531,6 +519,18 @@
     <article>
     
       <h1>5. Change Log</h1>
+      
+      <b>Version 1.11</b>
+      <ul>
+        <li>New menu type "tree" and attribute "extended"</li>
+        <li>Changed default file extension to .coa.txt</li>
+        <li>Bugfix in current language detection</li>
+        <li>Changed translation uri for flexible url rewrite</li>
+        <li>HTML Cache is now deprecated</li>
+        <li>Renamed folders in "CoaPlugin"</li>
+        <li>Improved content markup and templates</li>
+        <li>Optimized "loginReq" for renamed admin folder</li>
+      </ul>
       
       <b>Version 1.10</b>
       <ul>

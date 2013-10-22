@@ -2,7 +2,7 @@
 /*
 @File: template.php
 @Package: GetSimple
-@Action: Coa 1.10 for GetSimple
+@Action: Coa 1.11 for GetSimple
 */
 
 /*
@@ -18,7 +18,7 @@ http://coa.plue.me
 */
 
 # Define a non-standard page template
-//$pagetemplate = 'page-contact.coa.php';
+//$pagetemplate = 'page-contact.coa.txt';
 
 # Include Coa
 include 'theme/'.$TEMPLATE.'/config.inc.php';

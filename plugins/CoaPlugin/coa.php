@@ -15,12 +15,12 @@ if(isset($_GET['id'])) $curPid = $_GET['id'];
 else $curPid = 'index';
 
 // Required Includes
-require(GSPLUGINPATH.'CoaPlugin/inc/parse_coa.php');
-require(GSPLUGINPATH.'CoaPlugin/inc/template.php');
-require(GSPLUGINPATH.'CoaPlugin/inc/constant_objects.php');
-require(GSPLUGINPATH.'CoaPlugin/inc/page_objects.php');
-require(GSPLUGINPATH.'CoaPlugin/inc/navigation.php');
-require(GSPLUGINPATH.'CoaPlugin/inc/post_process.php');
+require(GSPLUGINPATH.'CoaPlugin/functions/parse_coa.php');
+require(GSPLUGINPATH.'CoaPlugin/functions/template.php');
+require(GSPLUGINPATH.'CoaPlugin/functions/constant_objects.php');
+require(GSPLUGINPATH.'CoaPlugin/functions/page_objects.php');
+require(GSPLUGINPATH.'CoaPlugin/functions/navigation.php');
+require(GSPLUGINPATH.'CoaPlugin/functions/post_process.php');
 
 // Fire
 ob_start('post_process');
