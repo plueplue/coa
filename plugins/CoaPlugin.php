@@ -38,10 +38,10 @@ if( file_exists($coa_settings_file) ) {
   $styles_off = $getData->styles_off;
 }
 else {
-	$translation_off = ''; 
-	$fullscreen_off = ''; 
-	$addcontent_off = '';
-	$styles_off = '';
+  $translation_off = ''; 
+  $fullscreen_off = ''; 
+  $addcontent_off = '';
+  $styles_off = '';
 }
 
 
@@ -82,54 +82,54 @@ if( strstr($_SERVER["REQUEST_URI"], 'theme-edit.php') && $fullscreen_off!='on' )
 ////////////////////
 
 function coa_settings() {
-	global $coa_settings_file, $thisfileCoa, $fullscreen_off, $translation_off, $addcontent_off, $styles_off;
-	$ok = null;
-	
-	// save data
-	if( isset($_POST['save']) ) {
-		$xml = @new SimpleXMLElement('<item></item>');
-		
-		if( isset($_POST['translation_off']) && $translation_off = $_POST['translation_off'] ) $xml->addChild('translation_off', $translation_off);
-		if( isset($_POST['fullscreen_off']) && $fullscreen_off = $_POST['fullscreen_off'] ) $xml->addChild('fullscreen_off', $fullscreen_off);
-		if( isset($_POST['addcontent_off']) && $addcontent_off = $_POST['addcontent_off']) $xml->addChild('addcontent_off', $addcontent_off);
-		if( isset($_POST['styles_off']) && $styles_off = $_POST['styles_off']) $xml->addChild('styles_off', $styles_off);
-		// prevent invalid xml when everythings is off
-		else $xml->addChild('styles_off', 'off');
-		
-		if ( $xml->asXML($coa_settings_file) ) {
-		  $data = getXML($coa_settings_file);
-		  $translation_off = $data->translation_off;
-		  $fullscreen_off = $data->fullscreen_off;
-		  $addcontent_off = $data->addcontent_off;
-		  $styles_off = $data->styles_off;
-		  echo '<div class="updated"><p>'.i18n_r('CoaPlugin/COA_SETTINGS_UPDATED').'</p></div>';
-		}
-		else {
-  		echo '<div class="error"><p>'.i18n_r('CoaPlugin/COA_ERROR').'</p></div>';
-		}
-	}
-	
-	if( $translation_off=='on' ) $translation_off = ' checked="checked"';
-	if( $fullscreen_off=='on' ) $fullscreen_off = ' checked="checked"';
-	if( $addcontent_off=='on' ) $addcontent_off = ' checked="checked"';
-	if( $styles_off=='on' ) $styles_off = ' checked="checked"';
-
-	echo '<h3>'.i18n_r('CoaPlugin/COA_SETTINGS').'</h3>
-	  <form id="coa_settings" method="post" action="'.$_SERVER['REQUEST_URI'].'">
-
-		<p><input name="translation_off" id="translation_off" class="text"'.$translation_off.' type="checkbox" />
-		<label for="translation_off">'.i18n_r('CoaPlugin/COA_TRANSLATION_OFF').'</label></p>
-		
-		<p><input name="fullscreen_off" id="fullscreen_off" class="text"'.$fullscreen_off.' type="checkbox" />
-		<label for="fullscreen_off">'.i18n_r('CoaPlugin/COA_FULLSCREEN_OFF').'</label></p>
-		
-		<p><input name="addcontent_off" id="addcontent_off" class="text"'.$addcontent_off.' type="checkbox" />
-		<label for="addcontent_off">'.i18n_r('CoaPlugin/COA_ADDCONTENT_OFF').'</label></p>
-
-		<p><input name="styles_off" id="styles_off" class="text"'.$styles_off.' type="checkbox" />
-		<label for="styles_off">'.i18n_r('CoaPlugin/COA_STYLES_OFF').'</label></p>
-		
-		<p><input type="submit" id="save" class="submit" value="'.i18n_r('CoaPlugin/COA_SAVE').'" name="save" /></p></form>';
+  global $coa_settings_file, $thisfileCoa, $fullscreen_off, $translation_off, $addcontent_off, $styles_off;
+  $ok = null;
+  
+  // save data
+  if( isset($_POST['save']) ) {
+    $xml = @new SimpleXMLElement('<item></item>');
+    
+    if( isset($_POST['translation_off']) && $translation_off = $_POST['translation_off'] ) $xml->addChild('translation_off', $translation_off);
+    if( isset($_POST['fullscreen_off']) && $fullscreen_off = $_POST['fullscreen_off'] ) $xml->addChild('fullscreen_off', $fullscreen_off);
+    if( isset($_POST['addcontent_off']) && $addcontent_off = $_POST['addcontent_off']) $xml->addChild('addcontent_off', $addcontent_off);
+    if( isset($_POST['styles_off']) && $styles_off = $_POST['styles_off']) $xml->addChild('styles_off', $styles_off);
+    // prevent invalid xml when everythings is off
+    else $xml->addChild('styles_off', 'off');
+    
+    if ( $xml->asXML($coa_settings_file) ) {
+      $data = getXML($coa_settings_file);
+      $translation_off = $data->translation_off;
+      $fullscreen_off = $data->fullscreen_off;
+      $addcontent_off = $data->addcontent_off;
+      $styles_off = $data->styles_off;
+      echo '<div class="updated"><p>'.i18n_r('CoaPlugin/COA_SETTINGS_UPDATED').'</p></div>';
+    }
+    else {
+      echo '<div class="error"><p>'.i18n_r('CoaPlugin/COA_ERROR').'</p></div>';
+    }
+  }
+  
+  if( $translation_off=='on' ) $translation_off = ' checked="checked"';
+  if( $fullscreen_off=='on' ) $fullscreen_off = ' checked="checked"';
+  if( $addcontent_off=='on' ) $addcontent_off = ' checked="checked"';
+  if( $styles_off=='on' ) $styles_off = ' checked="checked"';
+  
+  echo '<h3>'.i18n_r('CoaPlugin/COA_SETTINGS').'</h3>
+    <form id="coa_settings" method="post" action="'.$_SERVER['REQUEST_URI'].'">
+    
+    <p><input name="translation_off" id="translation_off" class="text"'.$translation_off.' type="checkbox" />
+    <label for="translation_off">'.i18n_r('CoaPlugin/COA_TRANSLATION_OFF').'</label></p>
+    
+    <p><input name="fullscreen_off" id="fullscreen_off" class="text"'.$fullscreen_off.' type="checkbox" />
+    <label for="fullscreen_off">'.i18n_r('CoaPlugin/COA_FULLSCREEN_OFF').'</label></p>
+    
+    <p><input name="addcontent_off" id="addcontent_off" class="text"'.$addcontent_off.' type="checkbox" />
+    <label for="addcontent_off">'.i18n_r('CoaPlugin/COA_ADDCONTENT_OFF').'</label></p>
+    
+    <p><input name="styles_off" id="styles_off" class="text"'.$styles_off.' type="checkbox" />
+    <label for="styles_off">'.i18n_r('CoaPlugin/COA_STYLES_OFF').'</label></p>
+    
+    <p><input type="submit" id="save" class="submit" value="'.i18n_r('CoaPlugin/COA_SAVE').'" name="save" /></p></form>';
 }
 
 
