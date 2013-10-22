@@ -17,7 +17,7 @@ define('PAGETEMPLATE', THEMEPATH.'coa/'.$pagetemplate);
 define('CONSTANTTEMPLATE', THEMEPATH.'coa/constant.coa.txt');
 
 # Translation Name for URL
-define('TRANSLATIONURL', 'de');
+define('TRANSLATIONURL', 'translated');
 
 # Subdirectory Rewrite Path
 define('SUBDIRPATH', '/');
