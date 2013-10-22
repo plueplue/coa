@@ -5,6 +5,10 @@ Coa is a powerful framework to create lean and functional templates.
 It provides CoaScript and some useful out of the box features for fast and flexible development.
 
 Coa is available for GetSimple, the simplest Content Management System ever.
+The latest version is Coa 1.11.
+
+Manual: http://coa.plue.me
+GitHub: https://github.com/plue/coa
 
 
 Install

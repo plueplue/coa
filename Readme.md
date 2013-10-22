@@ -9,7 +9,7 @@ The latest version is Coa 1.11.
 
 [Download](http://get-simple.info/extend/plugin/coa/375/) | 
 [Manual](http://coa.plue.me) | 
-[Github](https://github.com/plue/coa) | 
+[GitHub](https://github.com/plue/coa) | 
 [Support](http://get-simple.info/forums/showthread.php?tid=4667) | 
 [Donate](https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&hosted_button_id=GRD95ABZXJUTC)
 
