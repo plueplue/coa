@@ -9,7 +9,7 @@ Echo HTML Header
  * since 1.0 */
 
 function configObj($path) {
-  global $curPid, $USR;
+  global $curPid, $USR, $GSADMIN;
   
   $OA = array();
   $configOA = array();
@@ -29,7 +29,10 @@ function configObj($path) {
     if (isset($OA['allTrue']) && $OA['allTrue'] == 1 && $OA['type'] == 'config') {
         
         // require Login
-        if (isset($OA['loginReq']) && $OA['loginReq'] == 1 && !$USR) header('location:'.get_site_url(false).'admin/index.php?redirect='.$_SERVER['REQUEST_URI']);
+        if (isset($OA['loginReq']) && $OA['loginReq'] == 1 && !$USR) {
+          header('location:'.get_site_url(false).$GSADMIN.'/index.php?redirect='.$_SERVER['REQUEST_URI']);
+          exit;
+        }
         
         // all attributes to config array
         $configOA = $OA;

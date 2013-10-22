@@ -17,7 +17,7 @@ function textObj($OA) {
   if (isset($OA['link'])) {
   
     // check for class
-    if($OA['class']) $class = ' class="'.$OA['class'].'"';
+    if( isset($OA['class']) ) $class = ' class="'.$OA['class'].'"';
     else $class = '';
     
     echo '<a'.$class.' href="'. $OA['link'] .'"';
@@ -52,7 +52,7 @@ function imageObj($OA) {
   // link begin
   if (isset($OA['link'])) {
     echo '<a href="'. $OA['link'] .'"';
-    if($OA['linkT']) echo ' target="'. $OA['linkT'] .'"';
+    if(isset($OA['linkT'])) echo ' target="'. $OA['linkT'] .'"';
     echo '>';
   }
     
