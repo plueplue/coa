@@ -25,7 +25,7 @@ menu
   act = <li class="active"> | </li>
 
 content
-  wrap = <article><h1>$title</h1> | </article>
+  wrap = <main><h1>$title</h1> | </main>
 
 text
   value = <footer>this is the footer</footer>
