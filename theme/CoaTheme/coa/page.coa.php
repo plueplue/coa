@@ -12,6 +12,6 @@ content
   wrap = <aside> | </aside>
 
 place
-  file = coa/footer.coa.txt
+  file = coa/footer.coa.php
 
 ## End
